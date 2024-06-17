@@ -1,4 +1,4 @@
-package com.qualentum.sprint4
+package com.qualentum.sprint4.presentation
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
