@@ -23,21 +23,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        transparentSystemBars()
+        //transparentSystemBars()
         setUpNavController()
         setUpToolbar()
         setUpBottomNavigation()
     }
 
     private fun setUpNavController() {
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragmentContainer) as NavHostFragment
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
     }
 
     private fun setUpToolbar() {
         binding.toolbar.setupWithNavController(navController)
         binding.toolbar.setOnMenuItemClickListener {
-            when (it.itemId){
+            when (it.itemId) {
                 R.id.settingsFragment -> {
                     navController.navigate(R.id.action_fragment_to_settingsFragment)
                     //binding.bottomNavigationView.visibility = View.GONE

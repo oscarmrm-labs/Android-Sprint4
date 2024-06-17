@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- COLORS -->
     <color name="red">#F44336</color>
     <color name="blue">#008EFF</color>
 
@@ -11,6 +12,28 @@
 
     <color name="orange">#FF9800</color>
     <color name="yellow">#FFE500</color>
+
+    <!-- COLORS LIGHT THEME -->
+        <!-- Primary brand color. -->
+        <color name="colorPrimary">#EFAB55</color>
+        <color name="colorPrimaryVariant">#FF9A1C</color>
+        <color name="colorOnPrimary">#FFFFFF</color>
+
+        <!-- Secondary brand color. -->
+        <color name="colorSecondary">#57E5EF</color>
+        <color name="colorOnSecondary">#545454</color>
+
+        <!-- Error color. -->
+        <color name="colorError">#B00020</color>
+        <color name="colorOnError">#FFFFFF</color>
+
+        <!-- Background color. -->
+        <color name="colorBackground">#FFE8C5</color>
+        <color name="colorOnBackground">#000000</color>
+
+        <!-- Surface color. -->
+        <color name="colorSurface">#FFFFFF</color>
+        <color name="colorOnSurface">#000000</color>
 
 
 </resources>

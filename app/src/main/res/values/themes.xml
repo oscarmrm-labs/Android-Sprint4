@@ -1,9 +1,64 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Sprint4" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <item name="toolbarStyle">@style/toolbarStyle</item>
+        <item name="bottomNavigationStyle">@style/BottomBarNavigationStyle</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <!-- Error color. -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- Background color. -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+
+        <!-- Surface color. -->
+        <item name="colorSurface">@color/colorError</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" >@color/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor" >@color/colorPrimaryVariant</item>
+
+
     </style>
+
+    <!-- Toolbar Style -->
+    <style name="toolbarStyle" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
+        <item name="android:backgroundSplit">@color/colorOnSecondary</item>
+
+        <item name="android:theme">@style/ThemeOverlay.MyApp.ActionBar</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="menu_items_style">
+        <item name="itemIconTint">@color/colorOnSecondary</item>
+    </style>
+
+    <!-- Toolbar theme overlay to change icon color -->
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/colorOnSecondary</item>
+        <item name="colorControlActivated">@color/colorOnSecondary</item>
+    </style>
+
+    <!-- BottomBarNavigationStyle -->
+    <style name="BottomBarNavigationStyle" parent="@style/Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_bar_selector</item>
+        <item name="itemTextColor">@color/bottom_bar_selector</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+
 
     <style name="Theme.Sprint4" parent="Base.Theme.Sprint4" />
 </resources>
