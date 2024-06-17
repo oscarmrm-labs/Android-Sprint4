@@ -1,17 +1,13 @@
 package com.qualentum.sprint4
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.qualentum.sprint4.databinding.ActivityMainBinding
 
@@ -27,6 +23,17 @@ class MainActivity : AppCompatActivity() {
         setUpNavController()
         setUpToolbar()
         setUpBottomNavigation()
+        changeBottomBarVisibility()
+    }
+
+    private fun changeBottomBarVisibility() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.mainFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
+                R.id.favouritesFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
+                else -> binding.bottomNavigationView.visibility = View.GONE
+            }
+        }
     }
 
     private fun setUpNavController() {
@@ -50,6 +57,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun transparentSystemBars() {
         enableEdgeToEdge()

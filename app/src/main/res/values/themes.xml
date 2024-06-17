@@ -35,20 +35,13 @@
     <style name="toolbarStyle" parent="@style/Widget.MaterialComponents.Toolbar">
         <item name="titleTextColor">@color/white</item>
         <item name="subtitleTextColor">@color/white</item>
-        <item name="android:backgroundSplit">@color/colorOnSecondary</item>
-
-        <item name="android:theme">@style/ThemeOverlay.MyApp.ActionBar</item>
-        <item name="android:background">@color/colorPrimary</item>
-    </style>
-
-    <style name="menu_items_style">
-        <item name="itemIconTint">@color/colorOnSecondary</item>
+        <item name="android:background">@color/colorPrimary</item>    <item name="android:theme">@style/ThemeOverlay.MyApp.ActionBar</item>
     </style>
 
     <!-- Toolbar theme overlay to change icon color -->
     <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="colorControlNormal">@color/colorOnSecondary</item>
-        <item name="colorControlActivated">@color/colorOnSecondary</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
     </style>
 
     <!-- BottomBarNavigationStyle -->
