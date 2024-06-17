@@ -2,6 +2,7 @@ package com.qualentum.sprint4
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,31 +24,32 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         transparentSystemBars()
-        //setUpToolbar()
+        setUpNavController()
+        setUpToolbar()
         setUpBottomNavigation()
+    }
+
+    private fun setUpNavController() {
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragmentContainer) as NavHostFragment
+        navController = navHostFragment.navController
+    }
+
+    private fun setUpToolbar() {
         binding.toolbar.setupWithNavController(navController)
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId){
                 R.id.settingsFragment -> {
-                    navController.navigate(R.id.action_mainFragment_to_settingsFragment)
+                    navController.navigate(R.id.action_fragment_to_settingsFragment)
+                    //binding.bottomNavigationView.visibility = View.GONE
                     true
                 }
-                else -> false
+                else -> {
+                    false
+                }
             }
         }
     }
 
-    private fun setUpToolbar() {
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.settingsFragment -> {
-            binding.toolbar.findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
-            true
-        }
-
-        else -> false
-    }
     private fun transparentSystemBars() {
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -58,8 +60,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpBottomNavigation() {
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragmentContainer) as NavHostFragment
-        navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 }
