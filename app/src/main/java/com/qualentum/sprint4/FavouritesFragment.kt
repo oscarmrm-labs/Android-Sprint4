@@ -38,8 +38,5 @@ class FavouritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnNavigateToMain.setOnClickListener {
-            findNavController().navigate(R.id.action_favouritesFragment_to_mainFragment)
-        }
     }
 }

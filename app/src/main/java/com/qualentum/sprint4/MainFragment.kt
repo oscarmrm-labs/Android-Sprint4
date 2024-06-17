@@ -45,12 +45,6 @@ class MainFragment : Fragment() {
         binding.btnNavigateToDetail.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
         }
-        binding.btnNavigateToFavourites.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_favouritesFragment)
-        }
-        binding.btnNavigateToSettings.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
-        }
     }
 
 }
