@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.qualentum.sprint4.presentation.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/toolbar_title_main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_favouritesFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.qualentum.sprint4.presentation.FavouritesFragment"
-        android:label="fragment_favourites"
+        android:label="@string/toolbar_title_favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
             android:id="@+id/action_favouritesFragment_to_mainFragment"
@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.qualentum.sprint4.presentation.DetailFragment"
-        android:label="fragment_detail"
+        android:label="@string/toolbar_title_detail"
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_fragment_to_settingsFragment"
@@ -56,12 +56,12 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.qualentum.sprint4.presentation.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/toolbar_title_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/addPersonFragment"
         android:name="com.qualentum.sprint4.presentation.AddPersonFragment"
-        android:label="fragment_add_person"
+        android:label="@string/toolbar_title_add_person"
         tools:layout="@layout/fragment_add_person">
         <action
             android:id="@+id/action_fragment_to_settingsFragment"

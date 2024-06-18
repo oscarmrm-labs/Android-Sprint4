@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Sprint4</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Fragmetn balnk -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TOOLBAR TITLES -->
+    <string name="toolbar_title_main">Contactos</string>
+    <string name="toolbar_title_add_person">Añadir contacto</string>
+    <string name="toolbar_title_detail">Nombre persona</string> <!-- TODO CAMBIAR POR EL NOMBRE DE LA PERSONA -->
+    <string name="toolbar_title_favourites">Favoritos</string>
+    <string name="toolbar_title_settings">Ajustes</string>
+
 </resources>
