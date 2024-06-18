@@ -19,9 +19,6 @@
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment"/>
         <action
-            android:id="@+id/action_fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_addPersonFragment"
             app:destination="@id/addPersonFragment" />
     </fragment>
@@ -35,23 +32,12 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/favouritesFragment"
-            app:popUpToInclusive="false" />
-
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.qualentum.sprint4.presentation.DetailFragment"
         android:label="@string/toolbar_title_detail"
         tools:layout="@layout/fragment_detail" >
-        <action
-            android:id="@+id/action_fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/detailFragment"
-            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -63,10 +49,5 @@
         android:name="com.qualentum.sprint4.presentation.AddPersonFragment"
         android:label="@string/toolbar_title_add_person"
         tools:layout="@layout/fragment_add_person">
-        <action
-            android:id="@+id/action_fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/addPersonFragment"
-            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

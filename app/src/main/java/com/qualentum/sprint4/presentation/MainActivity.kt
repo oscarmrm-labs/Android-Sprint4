@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
+import com.qualentum.sprint4.presentation.extensions.navigateToSettings
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.settingsFragment -> {
-                    navController.navigate(R.id.action_fragment_to_settingsFragment)
+                    navController.navigateToSettings()
                     //binding.bottomNavigationView.visibility = View.GONE
                     true
                 }
