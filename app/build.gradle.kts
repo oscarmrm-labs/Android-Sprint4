@@ -54,4 +54,9 @@ dependencies {
     // Navegacion
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.lifecycle.viewmodel)
 }
