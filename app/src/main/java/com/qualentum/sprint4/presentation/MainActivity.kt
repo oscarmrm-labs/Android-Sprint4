@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //transparentSystemBars()
         setUpNavController()
         setUpToolbar()
         setUpBottomNavigation()
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.settingsFragment -> {
                     navController.navigateToSettings()
-                    //binding.bottomNavigationView.visibility = View.GONE
                     true
                 }
                 else -> {
