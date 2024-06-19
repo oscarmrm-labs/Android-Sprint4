@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleKspTools)
 }
 
 android {
@@ -59,4 +60,7 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
     implementation(libs.lifecycle.viewmodel)
+
+    // Room
+    implementation(libs.androidx.room.ktx)
 }

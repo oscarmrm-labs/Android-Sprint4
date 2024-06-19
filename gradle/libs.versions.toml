@@ -15,6 +15,9 @@ navigation = "2.7.7"
 coroutines = "1.8.1"
 lifeCycle = "2.8.2"
 
+room = "2.6.1"
+ksp = "2.0.0-1.0.21"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -35,6 +38,7 @@ coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
 # Room
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 # Dagger-Hilt
 
@@ -42,4 +46,5 @@ coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutin
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleKspTools = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
