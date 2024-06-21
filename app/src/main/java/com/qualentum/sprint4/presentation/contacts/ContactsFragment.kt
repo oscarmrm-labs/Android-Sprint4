@@ -52,8 +52,11 @@ class ContactsFragment : Fragment() {
     }
 
     private fun changeScreen(contact: Contact?) {
-        //val action = ContactsFragmentDirections
-        findNavController().navigate(R.id.action_contactsFragment_to_detailFragment)
+        val action = ContactsFragmentDirections.actionContactsFragmentToDetailFragment(
+            name = contact?.name.toString(),
+            age = contact?.age.toString().toInt()
+        )
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
