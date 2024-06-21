@@ -5,15 +5,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TOOLBAR TITLES -->
-    <string name="toolbar_title_main">Contactos</string>
-    <string name="toolbar_title_add_Contact">Añadir contacto</string>
+    <string name="toolbar_title_contact">Contactos</string>
+    <string name="toolbar_title_add_contact">Añadir contacto</string>
     <string name="toolbar_title_detail">Nombre persona</string> <!-- TODO CAMBIAR POR EL NOMBRE DE LA PERSONA (con variables) -->
     <string name="toolbar_title_favourites">Favoritos</string>
     <string name="toolbar_title_settings">Ajustes</string>
 
     <!-- Add Contact screen -->
-    <string name="add_Contact_screen_hint_name">Nombre</string>
-    <string name="add_Contact_screen_hint_edad">Edad</string>
-    <string name="add_Contact_screen_button_add">Añadir</string>
+    <string name="add_contact_screen_hint_name">Nombre</string>
+    <string name="add_contact_screen_hint_edad">Edad</string>
+    <string name="add_contact_screen_button_add">Añadir</string>
+
+    <!-- Contacts Screen -->
+    <string name="contacts_screen_content_description_fab">Añadir contactos</string>
 
 </resources>

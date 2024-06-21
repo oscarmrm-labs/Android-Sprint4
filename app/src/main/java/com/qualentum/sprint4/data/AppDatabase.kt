@@ -11,7 +11,8 @@ import com.qualentum.sprint4.data.entity.ContactEntity
     entities = [
         ContactEntity::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao

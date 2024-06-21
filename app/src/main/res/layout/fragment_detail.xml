@@ -6,10 +6,11 @@
     tools:context=".presentation.DetailFragment">
 
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="42sp"
         android:layout_gravity="center"
-        android:text="DETALLE" />
+        android:text="NO FUNCIONA"
+        android:textSize="42sp" />
 
 </FrameLayout>

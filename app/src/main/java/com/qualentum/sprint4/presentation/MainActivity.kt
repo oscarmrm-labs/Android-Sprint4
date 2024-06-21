@@ -2,10 +2,7 @@ package com.qualentum.sprint4.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -30,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun changeBottomBarVisibility() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.mainFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
+                R.id.contactsFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 R.id.favouritesFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 else -> binding.bottomNavigationView.visibility = View.GONE
             }
@@ -51,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigateToSettings()
                     true
                 }
+
                 else -> {
                     false
                 }
@@ -58,16 +56,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun transparentSystemBars() {
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-    }
 
     private fun setUpBottomNavigation() {
         binding.bottomNavigationView.setupWithNavController(navController)

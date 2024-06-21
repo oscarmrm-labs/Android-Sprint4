@@ -19,6 +19,7 @@ class AddContactFragment : Fragment() {
             //param1 = it.getString(ARG_PARAM1)
             //param2 = it.getString(ARG_PARAM2)
         }
+        viewModel = ViewModelProvider(this).get(AddContactViewModel::class)
     }
 
     override fun onCreateView(
@@ -26,8 +27,6 @@ class AddContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddContactBinding.inflate(inflater, container, false)
-
-        viewModel = ViewModelProvider(this).get(AddContactViewModel::class)
 
         binding.btnAddContact.setOnClickListener {
             insertContactInDatabse()
