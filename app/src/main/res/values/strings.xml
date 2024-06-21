@@ -6,14 +6,14 @@
 
     <!-- TOOLBAR TITLES -->
     <string name="toolbar_title_main">Contactos</string>
-    <string name="toolbar_title_add_person">Añadir contacto</string>
+    <string name="toolbar_title_add_Contact">Añadir contacto</string>
     <string name="toolbar_title_detail">Nombre persona</string> <!-- TODO CAMBIAR POR EL NOMBRE DE LA PERSONA (con variables) -->
     <string name="toolbar_title_favourites">Favoritos</string>
     <string name="toolbar_title_settings">Ajustes</string>
 
-    <!-- Add person screen -->
-    <string name="add_person_screen_hint_name">Nombre</string>
-    <string name="add_person_screen_hint_edad">Edad</string>
-    <string name="add_person_screen_button_add">Añadir</string>
+    <!-- Add Contact screen -->
+    <string name="add_Contact_screen_hint_name">Nombre</string>
+    <string name="add_Contact_screen_hint_edad">Edad</string>
+    <string name="add_Contact_screen_button_add">Añadir</string>
 
 </resources>

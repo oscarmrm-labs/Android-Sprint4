@@ -32,14 +32,13 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnNavigateToDetail.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
         }
-        binding.fabAddPerson.setOnClickListener{
-            findNavController().navigate(R.id.action_mainFragment_to_addPersonFragment)
+        binding.fabAddContact.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_addContactFragment)
         }
     }
 

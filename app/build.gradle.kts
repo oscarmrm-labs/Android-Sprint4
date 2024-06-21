@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.googleKspTools)
+    alias(libs.plugins.kotlinKapt)
 }
 
 android {
@@ -63,4 +63,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+
 }

@@ -4,43 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.AddPersonFragment">
+    tools:context=".presentation.AddContactFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilNombre"
+            android:id="@+id/tilName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
-            android:hint="@string/add_person_screen_hint_name"
+            android:hint="@string/add_Contact_screen_hint_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ietNombre"
+                android:id="@+id/ietName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEdad"
+            android:id="@+id/tilAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
-            android:hint="@string/add_person_screen_hint_edad"
+            android:hint="@string/add_Contact_screen_hint_edad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilNombre">
+            app:layout_constraintTop_toBottomOf="@id/tilName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ietEdad"
+                android:id="@+id/ietAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -48,15 +48,25 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddPerson"
+            android:id="@+id/btnAddContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/add_person_screen_button_add"
+            android:text="@string/add_Contact_screen_button_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/tvPrueba"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No funciona"
+            android:gravity="center"
+            android:textSize="42sp"
+            app:layout_constraintTop_toBottomOf="@id/tilAge"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
