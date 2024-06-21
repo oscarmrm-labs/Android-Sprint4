@@ -12,8 +12,10 @@
     <string name="toolbar_title_settings">Ajustes</string>
 
     <!-- Add Contact screen -->
-    <string name="add_contact_screen_hint_name">Nombre</string>
-    <string name="add_contact_screen_hint_edad">Edad</string>
+    <string name="add_contact_screen_name_hint">Nombre</string>
+    <string name="add_contact_screen_last_name_hint">Apellido</string>
+    <string name="add_contact_screen_date_of_birth_hint">Fecha de nacimiento</string>
+    <string name="add_contact_screen_date_of_birth_title_dialog">Seleccione la fecha</string>
     <string name="add_contact_screen_button_add">Añadir</string>
 
     <!-- Contacts Screen -->

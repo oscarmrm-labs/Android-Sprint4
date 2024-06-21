@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qualentum.sprint4.R
-import com.qualentum.sprint4.data.model.Contact
+import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.databinding.FragmentContactsBinding
 import com.qualentum.sprint4.presentation.contacts.list.ContactsAdapter
 import kotlinx.coroutines.launch
@@ -45,16 +45,16 @@ class ContactsFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupRecyclerView(contactsList: List<Contact>) {
+    private fun setupRecyclerView(contactsList: List<ContactModel>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter =
             ContactsAdapter(contactsList) { contact -> changeScreen(contact) }
     }
 
-    private fun changeScreen(contact: Contact?) {
+    private fun changeScreen(contact: ContactModel?) {
         val action = ContactsFragmentDirections.actionContactsFragmentToDetailFragment(
             name = contact?.name.toString(),
-            age = contact?.age.toString().toInt()
+            age = contact?.lastName.toString().toInt()
         )
         findNavController().navigate(action)
     }

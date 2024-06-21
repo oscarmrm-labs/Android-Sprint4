@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.qualentum.sprint4.data.model.Contact
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
+import com.qualentum.sprint4.domain.model.DetailContactModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
@@ -15,11 +20,7 @@ class AddContactFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            //param1 = it.getString(ARG_PARAM1)
-            //param2 = it.getString(ARG_PARAM2)
-        }
-        viewModel = ViewModelProvider(this).get(AddContactViewModel::class)
+        viewModel = ViewModelProvider(this)[AddContactViewModel::class]
     }
 
     override fun onCreateView(
@@ -28,17 +29,67 @@ class AddContactFragment : Fragment() {
     ): View {
         binding = FragmentAddContactBinding.inflate(inflater, container, false)
 
-        binding.btnAddContact.setOnClickListener {
-            insertContactInDatabse()
-        }
+        inflateBinding()
 
         return binding.root
     }
 
+    private fun inflateBinding() {
+        binding.apply {
+            ietDate.apply {
+                setOnClickListener {
+                    createMaterialDatePicker()
+                }
+                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
+                        createMaterialDatePicker()
+                    }
+                }
+            }
+            btnAddContact.setOnClickListener {
+                insertContactInDatabse()
+            }
+        }
+    }
+
+    private fun createMaterialDatePicker() {
+        val selectedDate = let {
+            if (binding.ietDate.text?.isNotEmpty() == true) {
+                //selectedDate = binding.ietDate.text
+                val fechaStr = binding.ietDate.text
+                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val date = sdf.parse(fechaStr.toString())
+                date?.time
+            } else {
+                MaterialDatePicker.todayInUtcMilliseconds()
+            }
+        }
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText(R.string.add_contact_screen_date_of_birth_title_dialog)
+            .setSelection(selectedDate)
+            .build()
+
+        activity?.let {
+            datePicker.show(it.supportFragmentManager, "MATERIAL_DATE_PICKER")
+        }
+
+        setOnClicksDatePicker(datePicker)
+    }
+
+    private fun setOnClicksDatePicker(datePicker: MaterialDatePicker<Long>) {
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            val selectedDate = Date(selection)
+            val formattedDate =
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDate)
+            binding.ietDate.setText(formattedDate.toString())
+        }
+    }
+
     private fun insertContactInDatabse() {
         val name = binding.ietName.text.toString()
-        val age = binding.ietAge.text.toString().toInt()
+        val lastName = binding.ietLastName.text.toString()
+        val dateOfBirth = binding.ietDate.text.toString()
 
-        viewModel.insertContact(Contact(name, age))
+        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth))
     }
 }

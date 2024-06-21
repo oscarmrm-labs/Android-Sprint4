@@ -8,7 +8,7 @@ import com.qualentum.sprint4.data.entity.ContactEntity
 
 @Dao
 interface ContactDao {
-    @Query("SELECT * FROM contacts")
+    @Query("SELECT * FROM contacts ORDER BY first_name ASC")
     suspend fun getAllContacts(): List<ContactEntity>
 
     @Query("SELECT * FROM contacts WHERE id IN (:contactIds)")

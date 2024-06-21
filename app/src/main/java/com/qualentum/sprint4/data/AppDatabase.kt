@@ -1,6 +1,7 @@
 package com.qualentum.sprint4.data
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -12,7 +13,7 @@ import com.qualentum.sprint4.data.entity.ContactEntity
         ContactEntity::class
     ],
     version = 1,
-    exportSchema = false
+    exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao

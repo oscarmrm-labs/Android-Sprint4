@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.qualentum.sprint4.data.AppDatabase
-import com.qualentum.sprint4.data.model.Contact
+import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.data.repository.ContactsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,8 +19,8 @@ class ContactsViewModel(application: Application): AndroidViewModel(application)
     private val loadingMutableState = MutableStateFlow(true)
     val loadingState: StateFlow<Boolean> = loadingMutableState
 
-    private var contactsMutableState: MutableStateFlow<List<Contact>> = MutableStateFlow(ArrayList(emptyList()))
-    val contactsState: StateFlow<List<Contact>> = contactsMutableState
+    private var contactsMutableState: MutableStateFlow<List<ContactModel>> = MutableStateFlow(ArrayList(emptyList()))
+    val contactsState: StateFlow<List<ContactModel>> = contactsMutableState
 
     init {
         viewModelScope.launch(Dispatchers.IO) {

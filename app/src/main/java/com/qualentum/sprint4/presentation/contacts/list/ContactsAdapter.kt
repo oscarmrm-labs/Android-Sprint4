@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.qualentum.sprint4.R
-import com.qualentum.sprint4.data.model.Contact
+import com.qualentum.sprint4.domain.model.ContactModel
 
 class ContactsAdapter(
-    val itemList: List<Contact>?,
-    private val onClickListener: (Contact?) -> Unit
+    val itemList: List<ContactModel>?,
+    private val onClickListener: (ContactModel?) -> Unit
 ) :
     RecyclerView.Adapter<ContactViewHolder>() {
 
