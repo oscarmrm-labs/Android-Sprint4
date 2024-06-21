@@ -47,7 +47,7 @@ class AddContactFragment : Fragment() {
                 }
             }
             btnAddContact.setOnClickListener {
-                insertContactInDatabse()
+                insertContactInDatabase()
             }
         }
     }
@@ -85,11 +85,12 @@ class AddContactFragment : Fragment() {
         }
     }
 
-    private fun insertContactInDatabse() {
+    private fun insertContactInDatabase() {
         val name = binding.ietName.text.toString()
         val lastName = binding.ietLastName.text.toString()
         val dateOfBirth = binding.ietDate.text.toString()
+        val favouriteColor = binding.ietColor.text.toString()
 
-        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth))
+        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor))
     }
 }

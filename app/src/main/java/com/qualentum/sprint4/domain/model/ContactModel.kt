@@ -9,6 +9,6 @@ data class DetailContactModel(
     val name: String?,
     val lastName: String?,
     val dateOfBirth: String?,
-    //val favouriteColorHex: String?,
+    val favouriteColorHex: String?,
     //val favouriteSport: String?,
 )

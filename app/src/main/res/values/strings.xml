@@ -16,6 +16,7 @@
     <string name="add_contact_screen_last_name_hint">Apellido</string>
     <string name="add_contact_screen_date_of_birth_hint">Fecha de nacimiento</string>
     <string name="add_contact_screen_date_of_birth_title_dialog">Seleccione la fecha</string>
+    <string name="add_contact_screen_last_favourite_color_hint">Color favorito</string>
     <string name="add_contact_screen_button_add">Añadir</string>
 
     <!-- Contacts Screen -->

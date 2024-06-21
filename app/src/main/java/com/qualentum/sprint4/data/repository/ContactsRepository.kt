@@ -21,7 +21,7 @@ class ContactsRepository(private val contactDao: ContactDao) {
             firstName = contact.name,
             lastName = contact.lastName,
             dateOfBirth = contact.dateOfBirth,
-            //favouriteColorHex = contact.favouriteColorHex,
+            favouriteColorHex = contact.favouriteColorHex,
             //favouriteSport = contact.favouriteSport,
         )
         contactDao.insertContact(entity)
