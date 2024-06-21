@@ -17,16 +17,7 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_contactsFragment_to_detailFragment"
-            app:destination="@id/detailFragment">
-            <argument
-                android:name="name"
-                android:defaultValue=""
-                app:argType="string" />
-            <argument
-                android:name="age"
-                android:defaultValue="0"
-                app:argType="integer" />
-        </action>
+            app:destination="@id/detailFragment"/>
         <action
             android:id="@+id/action_contactsFragment_to_addContactFragment"
             app:destination="@id/addContactFragment" />
@@ -46,7 +37,16 @@
         android:id="@+id/detailFragment"
         android:name="com.qualentum.sprint4.presentation.DetailFragment"
         android:label="@string/toolbar_title_detail"
-        tools:layout="@layout/fragment_detail"/>
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="age"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.qualentum.sprint4.presentation.SettingsFragment"
