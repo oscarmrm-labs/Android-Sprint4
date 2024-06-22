@@ -17,9 +17,23 @@
     <string name="add_contact_screen_date_of_birth_hint">Fecha de nacimiento</string>
     <string name="add_contact_screen_date_of_birth_title_dialog">Seleccione la fecha</string>
     <string name="add_contact_screen_last_favourite_color_hint">Color favorito</string>
+    <string name="add_contact_screen_last_favourite_sport_hint">Deporte favorito</string>
     <string name="add_contact_screen_button_add">Añadir</string>
 
     <!-- Contacts Screen -->
     <string name="contacts_screen_content_description_fab">Añadir contactos</string>
 
+    <!-- SPORTS -->
+    <!--
+    <string name="sport_swimming">Natación</string>
+    <string name="sport_soccer">Fútbol</string>
+    <string name="sport_volleyball">VolleyBall</string>
+    <string name="sport_basket">Baloncesto</string>
+    <string name="sport_tennis">Tenis</string>
+    <string name="sport_badminton">Badminton</string>
+    <string name="sport_baseball">Béisbol</string>
+    <string name="sport_handball">Balonmano</string>
+    <string name="sport_hockey">Hockey</string>
+    <string name="sport_rugby">Rugby</string>
+-->
 </resources>

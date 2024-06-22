@@ -1,10 +1,9 @@
-package com.qualentum.sprint4.presentation
+package com.qualentum.sprint4.presentation.add_contacts
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.qualentum.sprint4.data.AppDatabase
-import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.data.repository.ContactsRepository
 import com.qualentum.sprint4.domain.model.DetailContactModel
 import kotlinx.coroutines.Dispatchers

@@ -13,7 +13,7 @@ data class ContactEntity(
     @ColumnInfo(name = "last_name") val lastName: String?,
     @ColumnInfo(name = "date_of_birth") val dateOfBirth: String?,
     @ColumnInfo(name = "favourite_color") val favouriteColorHex: String?,
-    //@ColumnInfo(name = "favourite_sport") val favouriteSport: String?,
+    @ColumnInfo(name = "favourite_sport") val favouriteSport: String?,
     //@ColumnInfo(name = "location") val location: Int?,
     @ColumnInfo(name = "is_favourite_contact") val isFavouriteContact: Boolean? = false,
 

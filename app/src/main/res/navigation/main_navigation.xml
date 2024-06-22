@@ -54,7 +54,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/addContactFragment"
-        android:name="com.qualentum.sprint4.presentation.AddContactFragment"
+        android:name="com.qualentum.sprint4.presentation.add_contacts.AddContactFragment"
         android:label="@string/toolbar_title_add_contact"
         tools:layout="@layout/fragment_add_contact"/>
 </navigation>

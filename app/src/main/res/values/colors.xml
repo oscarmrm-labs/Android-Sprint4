@@ -15,8 +15,8 @@
 
     <!-- COLORS LIGHT THEME -->
         <!-- Primary brand color. -->
-        <color name="colorPrimary">#EFAB55</color>
-        <color name="colorPrimaryVariant">#C08B48</color>
+        <color name="colorPrimary">#E69834</color>
+        <color name="colorPrimaryVariant">#B77929</color>
         <color name="colorOnPrimary">#FFFFFF</color>
 
         <!-- Secondary brand color. -->
