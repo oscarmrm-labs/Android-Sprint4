@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.qualentum.sprint4.data.AppDatabase
 import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.data.repository.ContactsRepository
+import com.qualentum.sprint4.domain.usecases.ContactsUseCases
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
 class ContactsViewModel(application: Application): AndroidViewModel(application) {
 
     private val contactDao = AppDatabase.getDatabase(application).contactDao()
-    private var repository = ContactsRepository(contactDao)
+    private val repository = ContactsRepository(contactDao)
+    private val contactsUseCases = ContactsUseCases(repository)
 
     private val loadingMutableState = MutableStateFlow(true)
     val loadingState: StateFlow<Boolean> = loadingMutableState
@@ -31,6 +33,6 @@ class ContactsViewModel(application: Application): AndroidViewModel(application)
     }
 
     private suspend fun getAllContacts() {
-        contactsMutableState.value = repository.getContacts()
+        contactsMutableState.value = contactsUseCases.getAllContacts()
     }
 }

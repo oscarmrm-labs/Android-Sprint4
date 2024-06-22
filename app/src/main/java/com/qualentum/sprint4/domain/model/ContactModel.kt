@@ -1,6 +1,7 @@
 package com.qualentum.sprint4.domain.model
 
 data class ContactModel(
+    val id: Int?,
     val name: String?,
     val lastName: String?,
 )

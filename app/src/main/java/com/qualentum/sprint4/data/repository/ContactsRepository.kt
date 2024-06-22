@@ -6,14 +6,8 @@ import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.domain.model.DetailContactModel
 
 class ContactsRepository(private val contactDao: ContactDao) {
-    suspend fun getContacts(): List<ContactModel> {
-        val entity = contactDao.getAllContacts()
-        return entity.map {
-            ContactModel(
-                name = it.firstName,
-                lastName = it.lastName
-            )
-        }
+    suspend fun getContacts(): List<ContactEntity> {
+        return contactDao.getAllContacts()
     }
 
     suspend fun insertContact(contact: DetailContactModel) {
