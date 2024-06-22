@@ -1,4 +1,4 @@
-package com.qualentum.sprint4.presentation
+package com.qualentum.sprint4.presentation.add_contacts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -90,7 +90,8 @@ class AddContactFragment : Fragment() {
         val lastName = binding.ietLastName.text.toString()
         val dateOfBirth = binding.ietDate.text.toString()
         val favouriteColor = binding.ietColor.text.toString()
+        val favouriteSport = binding.ietSport.text.toString()
 
-        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor))
+        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport))
     }
 }
