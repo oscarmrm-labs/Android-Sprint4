@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.kotlinKapt)
     alias(libs.plugins.navigationSafeArgs)
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -66,4 +67,12 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
 
+    // Dagger-Hilt
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.copmiler)
+
+}
+
+kapt {
+    correctErrorTypes = true
 }
