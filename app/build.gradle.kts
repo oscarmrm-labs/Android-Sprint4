@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.kotlinKapt)
     alias(libs.plugins.navigationSafeArgs)
-    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.pluginDevKsp)
+    alias(libs.plugins.pluginDaggerHilt)
 }
 
 android {
@@ -63,16 +63,11 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
 
     // Room
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
-    // Dagger-Hilt
-    implementation(libs.dagger.hilt.android)
-    kapt(libs.dagger.hilt.copmiler)
-
-}
-
-kapt {
-    correctErrorTypes = true
+    // Dagger Hilt
+    implementation(libs.dagger.hilt)
+    ksp(libs.dagger.hilt.compiler)
 }
