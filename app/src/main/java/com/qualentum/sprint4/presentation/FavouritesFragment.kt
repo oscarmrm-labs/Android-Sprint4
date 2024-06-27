@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.qualentum.sprint4.databinding.FragmentFavouritesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class FavouritesFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -25,7 +27,7 @@ class FavouritesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavouritesBinding.inflate(inflater, container, false)
         return binding.root
     }

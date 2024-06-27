@@ -7,6 +7,7 @@ import com.qualentum.sprint4.data.AppDatabase
 import com.qualentum.sprint4.data.repository.ContactsRepository
 import com.qualentum.sprint4.domain.model.DetailContactModel
 import com.qualentum.sprint4.domain.usecases.ContactsUseCases
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

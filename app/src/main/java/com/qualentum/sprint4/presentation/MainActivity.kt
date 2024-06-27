@@ -9,7 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
 import com.qualentum.sprint4.presentation.extensions.navigateToSettings
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment

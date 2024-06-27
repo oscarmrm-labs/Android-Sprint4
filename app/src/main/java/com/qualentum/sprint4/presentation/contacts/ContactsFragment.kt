@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,19 +15,22 @@ import com.qualentum.sprint4.R
 import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.databinding.FragmentContactsBinding
 import com.qualentum.sprint4.presentation.contacts.list.ContactsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class ContactsFragment : Fragment() {
+@AndroidEntryPoint
+class ContactsFragment @Inject constructor() : Fragment() {
 
     private val TAG = "TAG"
 
     private lateinit var binding: FragmentContactsBinding
-    private lateinit var viewModel: ContactsViewModel
+    private val viewModel: ContactsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[ContactsViewModel::class]
+        //viewModel = ViewModelProvider(this)[ContactsViewModel::class]
     }
 
     override fun onCreateView(

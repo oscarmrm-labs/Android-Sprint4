@@ -10,10 +10,12 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
     private lateinit var viewModel: AddContactViewModel

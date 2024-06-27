@@ -1,4 +1,4 @@
-package com.qualentum.sprint4
+package com.qualentum.sprint4.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
