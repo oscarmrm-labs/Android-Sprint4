@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
@@ -18,11 +18,12 @@ import java.util.Locale
 @AndroidEntryPoint
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
-    private lateinit var viewModel: AddContactViewModel
+    //private lateinit var viewModel: AddContactViewModel
+    private val viewModel: AddContactViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[AddContactViewModel::class]
+        //viewModel = ViewModelProvider(this)[AddContactViewModel::class]
     }
 
     override fun onCreateView(
