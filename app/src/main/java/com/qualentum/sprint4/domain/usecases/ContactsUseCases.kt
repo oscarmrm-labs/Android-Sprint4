@@ -10,10 +10,14 @@ class ContactsUseCases @Inject constructor(
     private val repository: ContactsRepository
 ) {
     suspend fun getAllContacts(): List<ContactModel> {
-        return ContactsConverter.entityListToModelList(repository.getContacts())
+        return ContactsConverter.contactEntityListToModelList(repository.getContacts())
     }
 
     suspend fun insertContact(contact: DetailContactModel) {
         repository.insertContact(contact)
+    }
+
+    suspend fun getDetailContactById(id: Int): DetailContactModel {
+        return ContactsConverter.contactEntityToDetailModel(repository.getContactById(id))
     }
 }

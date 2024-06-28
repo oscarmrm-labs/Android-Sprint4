@@ -35,16 +35,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.qualentum.sprint4.presentation.DetailFragment"
+        android:name="com.qualentum.sprint4.presentation.detail.DetailFragment"
         android:label="@string/toolbar_title_detail"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="name"
-            android:defaultValue=""
-            app:argType="string" />
-        <argument
-            android:name="age"
-            android:defaultValue="0"
+            android:name="id"
+            android:defaultValue="1"
             app:argType="integer" />
     </fragment>
     <fragment

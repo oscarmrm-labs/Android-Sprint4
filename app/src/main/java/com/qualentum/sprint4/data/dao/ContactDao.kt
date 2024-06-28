@@ -11,8 +11,8 @@ interface ContactDao {
     @Query("SELECT * FROM contacts ORDER BY first_name ASC")
     suspend fun getAllContacts(): List<ContactEntity>
 
-    @Query("SELECT * FROM contacts WHERE id IN (:contactIds)")
-    suspend fun loadAllByIds(contactIds: IntArray): List<ContactEntity>
+    @Query("SELECT * FROM contacts WHERE id = (:contactId)")
+    suspend fun getContactById(contactId: Int): ContactEntity
 
     @Insert
     suspend fun insertContact(vararg contacts: ContactEntity)

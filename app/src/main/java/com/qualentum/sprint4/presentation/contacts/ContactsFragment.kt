@@ -39,7 +39,6 @@ class ContactsFragment @Inject constructor() : Fragment() {
 
         lifecycleScope.launch {
             viewModel.contactsState.collect {
-                // TODO: recyclerView
                 setupRecyclerView(it)
                 Log.i(TAG, "onCreateView: List of contacts ==> $it")
             }
@@ -55,8 +54,7 @@ class ContactsFragment @Inject constructor() : Fragment() {
 
     private fun changeScreen(contact: ContactModel?) {
         val action = ContactsFragmentDirections.actionContactsFragmentToDetailFragment(
-            name = contact?.name.toString(),
-            age = contact?.lastName.toString().toInt()
+            id = contact?.id.toString().toInt()
         )
         findNavController().navigate(action)
     }

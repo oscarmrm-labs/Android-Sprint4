@@ -9,9 +9,7 @@ import javax.inject.Inject
 class ContactsRepository @Inject constructor(
     private val contactDao: ContactDao
 ) {
-    suspend fun getContacts(): List<ContactEntity> {
-        return contactDao.getAllContacts()
-    }
+    suspend fun getContacts(): List<ContactEntity> = contactDao.getAllContacts()
 
     suspend fun insertContact(contact: DetailContactModel) {
         val entity = ContactEntity(
@@ -23,4 +21,6 @@ class ContactsRepository @Inject constructor(
         )
         contactDao.insertContact(entity)
     }
+
+    suspend fun getContactById(id: Int): ContactEntity = contactDao.getContactById(id)
 }
