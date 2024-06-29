@@ -8,14 +8,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
+import com.qualentum.sprint4.presentation.common.ToolbarManager
 import com.qualentum.sprint4.presentation.extensions.navigateToSettings
+import com.qualentum.sprint4.presentation.interfaces.ToolbarTitleListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
+    private lateinit var toolbarManager: ToolbarManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -43,23 +46,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpToolbar() {
-        binding.toolbar.setupWithNavController(navController)
-        binding.toolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.settingsFragment -> {
-                    navController.navigateToSettings()
-                    true
-                }
-
-                else -> {
-                    false
-                }
-            }
-        }
+        toolbarManager = ToolbarManager(this, binding.toolbar, navController)
     }
 
 
     private fun setUpBottomNavigation() {
         binding.bottomNavigationView.setupWithNavController(navController)
     }
+
+    override fun updateToolbarTitle(title: String) {
+        toolbarManager.setTitle(title)
+    }
+
 }

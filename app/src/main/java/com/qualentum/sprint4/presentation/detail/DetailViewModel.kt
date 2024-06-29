@@ -44,13 +44,4 @@ class DetailViewModel @Inject constructor(
     fun setContactId(id: Int) {
         idMutableState.value = id
     }
-
-    // TODO: Cargar el elemento del id
-    /*fun onSaveInstanceState(id: Int) {
-        this.id = id
-    }
-
-    fun getId() {
-
-    }*/
 }

@@ -1,5 +1,6 @@
 package com.qualentum.sprint4.presentation.detail
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.qualentum.sprint4.databinding.FragmentDetailBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
+import com.qualentum.sprint4.presentation.interfaces.ToolbarTitleListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -19,7 +21,7 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val viewModel: DetailViewModel by viewModels()
 
-    val args: DetailFragmentArgs by navArgs()
+    private val args: DetailFragmentArgs by navArgs()
     private var id: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,16 @@ class DetailFragment : Fragment() {
         id = args.id
     }
 
+    private var toolbarTitleListener: ToolbarTitleListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ToolbarTitleListener) {
+            toolbarTitleListener = context
+        }
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +51,10 @@ class DetailFragment : Fragment() {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         observeViewModel()
         return binding.root
+    }
+
+    private fun setToolbarTitle(title: String) {
+        toolbarTitleListener?.updateToolbarTitle(title)
     }
 
     private fun observeViewModel() {
@@ -63,6 +79,7 @@ class DetailFragment : Fragment() {
             tvDateOfBirth.text = it.dateOfBirth
             tvFavouriteColor.text = it.favouriteColorHex
             tvFavouriteSport.text = it.favouriteSport
+            setToolbarTitle("${it.name} ${it.lastName}")
         }
     }
 }

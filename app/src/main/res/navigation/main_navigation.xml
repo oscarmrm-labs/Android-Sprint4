@@ -42,6 +42,10 @@
             android:name="id"
             android:defaultValue="1"
             app:argType="integer" />
+        <argument
+            android:name="completeName"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

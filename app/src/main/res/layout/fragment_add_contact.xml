@@ -54,7 +54,7 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
             android:hint="@string/add_contact_screen_date_of_birth_hint"
-            app:endIconDrawable="@drawable/ic_settings"
+            app:endIconDrawable="@drawable/ic_calendar"
             app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

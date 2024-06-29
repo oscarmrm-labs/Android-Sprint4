@@ -18,22 +18,14 @@ import java.util.Locale
 @AndroidEntryPoint
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
-    //private lateinit var viewModel: AddContactViewModel
     private val viewModel: AddContactViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //viewModel = ViewModelProvider(this)[AddContactViewModel::class]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddContactBinding.inflate(inflater, container, false)
-
         inflateBinding()
-
         return binding.root
     }
 
