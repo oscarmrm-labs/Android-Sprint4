@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qualentum.sprint4.R
@@ -27,8 +28,11 @@ class ContactsFragment @Inject constructor() : Fragment() {
     private lateinit var binding: FragmentContactsBinding
     private val viewModel: ContactsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+         lifecycleScope.launch {
+             viewModel.getAllContacts()
+         }
     }
 
     override fun onCreateView(

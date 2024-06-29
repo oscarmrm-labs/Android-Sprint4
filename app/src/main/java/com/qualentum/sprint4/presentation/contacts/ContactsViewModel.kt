@@ -29,7 +29,7 @@ class ContactsViewModel @Inject constructor(
         }
     }
 
-    private suspend fun getAllContacts() {
+    suspend fun getAllContacts() {
         contactsMutableState.value = contactsUseCases.getAllContacts()
     }
 }
