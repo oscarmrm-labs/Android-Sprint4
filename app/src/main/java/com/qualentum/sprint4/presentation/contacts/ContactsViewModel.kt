@@ -23,18 +23,32 @@ class ContactsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            loadingMutableState.value = true
             getAllContacts()
-            loadingMutableState.value = false
         }
     }
 
     suspend fun getAllContacts() {
+        loadingMutableState.value = true
         contactsMutableState.value = contactsUseCases.getAllContacts()
+        loadingMutableState.value = false
     }
 
     suspend fun getFilteredContacts(filter: String?) {
+        loadingMutableState.value = true
         val query = "%$filter%"
         contactsMutableState.value = contactsUseCases.getFilteredContacts(query)
+        loadingMutableState.value = false
+    }
+
+    suspend fun deleteContact(id: Int?) {
+        loadingMutableState.value = true
+        contactsUseCases.deleteContact(id)
+        loadingMutableState.value = false
+    }
+
+    suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
+        loadingMutableState.value = true
+        contactsUseCases.updateFavouriteContact(id, isFavourite)
+        loadingMutableState.value = false
     }
 }

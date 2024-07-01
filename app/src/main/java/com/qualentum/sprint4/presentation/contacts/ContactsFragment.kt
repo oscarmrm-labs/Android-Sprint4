@@ -33,10 +33,6 @@ class ContactsFragment @Inject constructor() : Fragment() {
         getAllContactsOrFilteredContacts(binding.searchField.query.toString())
     }
 
-    private fun clearSearchViewText() {
-        binding.searchField.setQuery("", true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -68,10 +64,14 @@ class ContactsFragment @Inject constructor() : Fragment() {
         }
     }
 
-    fun setupRecyclerView(contactsList: List<ContactModel>) {
+    private fun setupRecyclerView(contactsList: List<ContactModel>) {
+        val adapter = ContactsAdapter(contactsList,
+            { contact -> changeScreen(contact) },
+            { contact -> addToFavourites(contact?.id!!, contact.isFavourite!!) },
+            { contact -> deleteContact(contact?.id) }
+        )
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter =
-            ContactsAdapter(contactsList) { contact -> changeScreen(contact) }
+        binding.recyclerView.adapter = adapter
     }
 
     private fun changeScreen(contact: ContactModel?) {
@@ -79,6 +79,21 @@ class ContactsFragment @Inject constructor() : Fragment() {
             id = contact?.id.toString().toInt()
         )
         findNavController().navigate(action)
+    }
+
+    private fun addToFavourites(id: Int?, isFavourite: Boolean?) {
+        val toggleFavourite = !isFavourite!!
+        lifecycleScope.launch {
+            viewModel.updateFavouriteContact(id, toggleFavourite)
+            getAllContactsOrFilteredContacts(binding.searchField.query.toString())
+        }
+    }
+
+    private fun deleteContact(id: Int?) {
+        lifecycleScope.launch {
+            viewModel.deleteContact(id)
+            getAllContactsOrFilteredContacts(binding.searchField.query.toString())
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,7 +1,6 @@
 package com.qualentum.sprint4.data.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.qualentum.sprint4.data.entity.ContactEntity
@@ -20,8 +19,10 @@ interface ContactDao {
     @Insert
     suspend fun insertContact(vararg contacts: ContactEntity)
 
-    @Delete
-    suspend fun delete(contact: ContactEntity)
+    @Query("DELETE FROM contacts WHERE id = :contactId")
+    suspend fun deleteContactById(contactId: Int?)
 
-    // TODO: modifycontact
+    @Query("UPDATE contacts SET is_favourite_contact = :isFavourite WHERE id = :contactId")
+    suspend fun updateFavouriteContact(contactId: Int?, isFavourite: Boolean?)
+
 }

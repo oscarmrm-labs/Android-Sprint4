@@ -4,6 +4,7 @@ data class ContactModel(
     val id: Int?,
     val name: String?,
     val lastName: String?,
+    val isFavourite: Boolean?
 )
 
 data class DetailContactModel(

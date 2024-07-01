@@ -11,7 +11,8 @@ class ContactsConverter {
                 ContactModel(
                     id = it.id,
                     name = it.firstName,
-                    lastName = it.lastName
+                    lastName = it.lastName,
+                    isFavourite = it.isFavouriteContact
                 )
             }
         }

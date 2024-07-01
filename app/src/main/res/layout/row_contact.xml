@@ -29,13 +29,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toTopOf="@id/tvAge"
+            app:layout_constraintBottom_toTopOf="@id/tvLastName"
             app:layout_constraintStart_toEndOf="@id/ivContact"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Nombre" />
 
         <TextView
-            android:id="@+id/tvAge"
+            android:id="@+id/tvLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -43,6 +43,42 @@
             app:layout_constraintStart_toEndOf="@id/ivContact"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             tools:text="Edad" />
+
+        <ImageView
+            android:id="@+id/ic_add_favourite_holder"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ic_delete_contact"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/cardview_dark_background" />
+
+        <ImageView
+            android:id="@+id/ic_add_favourite_inside"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="@id/ic_add_favourite_holder"
+            app:layout_constraintEnd_toEndOf="@id/ic_add_favourite_holder"
+            app:layout_constraintTop_toTopOf="@id/ic_add_favourite_holder"
+            app:layout_constraintBottom_toBottomOf="@id/ic_add_favourite_holder"
+            android:tintMode="src_in"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/ic_delete_contact"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View

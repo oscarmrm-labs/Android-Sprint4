@@ -8,7 +8,9 @@ import com.qualentum.sprint4.domain.model.ContactModel
 
 class ContactsAdapter(
     val itemList: List<ContactModel>?,
-    private val onClickListener: (ContactModel?) -> Unit
+    private val onClickListener: (ContactModel?) -> Unit,
+    private val onFavouriteClick: (ContactModel?) -> Unit,
+    private val onDeleteClick: (ContactModel?) -> Unit
 ) :
     RecyclerView.Adapter<ContactViewHolder>() {
 
@@ -19,7 +21,7 @@ class ContactsAdapter(
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val item = itemList?.get(position)
-        holder.onBind(item, onClickListener)
+        holder.onBind(item, onClickListener, onFavouriteClick, onDeleteClick)
     }
 
     override fun getItemCount(): Int {

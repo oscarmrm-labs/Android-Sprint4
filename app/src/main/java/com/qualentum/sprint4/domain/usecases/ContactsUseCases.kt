@@ -13,16 +13,19 @@ class ContactsUseCases @Inject constructor(
         return ContactsConverter.contactEntityListToModelList(repository.getContacts())
     }
 
-    suspend fun insertContact(contact: DetailContactModel) {
-        repository.insertContact(contact)
-    }
+    suspend fun insertContact(contact: DetailContactModel) = repository.insertContact(contact)
 
     suspend fun getDetailContactById(id: Int): DetailContactModel {
         return ContactsConverter.contactEntityToDetailModel(repository.getContactById(id))
     }
 
-
     suspend fun getFilteredContacts(filter: String?): List<ContactModel> {
         return ContactsConverter.contactEntityListToModelList(repository.getFilteredContact(filter))
+    }
+
+    suspend fun deleteContact(id: Int?) = repository.deleteContact(id)
+
+    suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
+        repository.updateFavouriteContact(id, isFavourite)
     }
 }
