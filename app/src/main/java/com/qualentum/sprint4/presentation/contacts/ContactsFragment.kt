@@ -30,9 +30,11 @@ class ContactsFragment @Inject constructor() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        lifecycleScope.launch {
-            viewModel.getAllContacts()
-        }
+        getAllContactsOrFilteredContacts(binding.searchField.query.toString())
+    }
+
+    private fun clearSearchViewText() {
+        binding.searchField.setQuery("", true)
     }
 
     override fun onCreateView(
@@ -45,27 +47,25 @@ class ContactsFragment @Inject constructor() : Fragment() {
         }
         binding.searchField.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                lifecycleScope.launch {
-                    if (query.isNullOrBlank()){
-                        viewModel.getAllContacts()
-                    } else {
-                        viewModel.getFilteredContacts(query)
-                    }
-                }
+                getAllContactsOrFilteredContacts(query)
                 return true
             }
             override fun onQueryTextChange(query: String?): Boolean {
-                lifecycleScope.launch {
-                    if (query.isNullOrBlank()){
-                        viewModel.getAllContacts()
-                    } else {
-                        viewModel.getFilteredContacts(query)
-                    }
-                }
+                getAllContactsOrFilteredContacts(query)
                 return true
             }
         })
         return binding.root
+    }
+
+    private fun getAllContactsOrFilteredContacts(query: String?) {
+        lifecycleScope.launch {
+            if (query.isNullOrBlank()){
+                viewModel.getAllContacts()
+            } else {
+                viewModel.getFilteredContacts(query)
+            }
+        }
     }
 
     fun setupRecyclerView(contactsList: List<ContactModel>) {

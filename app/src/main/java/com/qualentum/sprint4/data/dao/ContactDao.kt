@@ -14,7 +14,7 @@ interface ContactDao {
     @Query("SELECT * FROM contacts WHERE id = (:contactId)")
     suspend fun getContactById(contactId: Int): ContactEntity
 
-    @Query("SELECT * FROM contacts WHERE first_name LIKE :filter OR last_name LIKE :filter")
+    @Query("SELECT * FROM contacts WHERE first_name LIKE :filter OR last_name LIKE :filter ORDER BY first_name ASC")
     suspend fun getFilteredContact(filter: String?): List<ContactEntity>
 
     @Insert
