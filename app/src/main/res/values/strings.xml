@@ -22,6 +22,7 @@
 
     <!-- Contacts Screen -->
     <string name="contacts_screen_content_description_fab">Añadir contactos</string>
+    <string name="search_view_hint">Search</string>
 
     <!-- SPORTS -->
     <!--

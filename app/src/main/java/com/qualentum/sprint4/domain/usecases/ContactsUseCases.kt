@@ -20,4 +20,9 @@ class ContactsUseCases @Inject constructor(
     suspend fun getDetailContactById(id: Int): DetailContactModel {
         return ContactsConverter.contactEntityToDetailModel(repository.getContactById(id))
     }
+
+
+    suspend fun getFilteredContacts(filter: String?): List<ContactModel> {
+        return ContactsConverter.contactEntityListToModelList(repository.getFilteredContact(filter))
+    }
 }

@@ -23,4 +23,7 @@ class ContactsRepository @Inject constructor(
     }
 
     suspend fun getContactById(id: Int): ContactEntity = contactDao.getContactById(id)
+
+
+    suspend fun getFilteredContact(filter: String?): List<ContactEntity> = contactDao.getFilteredContact(filter)
 }

@@ -32,4 +32,9 @@ class ContactsViewModel @Inject constructor(
     suspend fun getAllContacts() {
         contactsMutableState.value = contactsUseCases.getAllContacts()
     }
+
+    suspend fun getFilteredContacts(filter: String?) {
+        val query = "%$filter%"
+        contactsMutableState.value = contactsUseCases.getFilteredContacts(query)
+    }
 }

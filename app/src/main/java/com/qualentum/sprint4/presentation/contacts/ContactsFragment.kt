@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.qualentum.sprint4.R
@@ -30,27 +30,45 @@ class ContactsFragment @Inject constructor() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-         lifecycleScope.launch {
-             viewModel.getAllContacts()
-         }
+        lifecycleScope.launch {
+            viewModel.getAllContacts()
+        }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactsBinding.inflate(inflater, container, false)
 
-        lifecycleScope.launch {
-            viewModel.contactsState.collect {
-                setupRecyclerView(it)
-                Log.i(TAG, "onCreateView: List of contacts ==> $it")
-            }
+        binding.fabAddContact.setOnClickListener {
+            findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
         }
+        binding.searchField.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                lifecycleScope.launch {
+                    if (query.isNullOrBlank()){
+                        viewModel.getAllContacts()
+                    } else {
+                        viewModel.getFilteredContacts(query)
+                    }
+                }
+                return true
+            }
+            override fun onQueryTextChange(query: String?): Boolean {
+                lifecycleScope.launch {
+                    if (query.isNullOrBlank()){
+                        viewModel.getAllContacts()
+                    } else {
+                        viewModel.getFilteredContacts(query)
+                    }
+                }
+                return true
+            }
+        })
         return binding.root
     }
 
-    private fun setupRecyclerView(contactsList: List<ContactModel>) {
+    fun setupRecyclerView(contactsList: List<ContactModel>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter =
             ContactsAdapter(contactsList) { contact -> changeScreen(contact) }
@@ -65,11 +83,11 @@ class ContactsFragment @Inject constructor() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnNavigateToDetail.setOnClickListener {
-            findNavController().navigate(R.id.action_contactsFragment_to_detailFragment)
-        }
-        binding.fabAddContact.setOnClickListener {
-            findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
+        lifecycleScope.launch {
+            viewModel.contactsState.collect {
+                setupRecyclerView(it)
+                Log.i(TAG, "onCreateView: List of contacts ==> $it")
+            }
         }
     }
 }
