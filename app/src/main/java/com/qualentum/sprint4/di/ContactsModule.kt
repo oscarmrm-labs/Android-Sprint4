@@ -7,6 +7,7 @@ import com.qualentum.sprint4.data.dao.ContactDao
 import com.qualentum.sprint4.data.repository.ContactsRepository
 import com.qualentum.sprint4.domain.usecases.ContactsUseCases
 import com.qualentum.sprint4.presentation.contacts.ContactsViewModel
+import com.qualentum.sprint4.presentation.favourites.FavouritesViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +31,16 @@ object ContactsModule {
         contactsUseCases: ContactsUseCases
     ): ContactsViewModel {
         return ContactsViewModel (
+            contactsUseCases
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavouriteContactsViewModel(
+        contactsUseCases: ContactsUseCases
+    ): FavouritesViewModel {
+        return FavouritesViewModel (
             contactsUseCases
         )
     }

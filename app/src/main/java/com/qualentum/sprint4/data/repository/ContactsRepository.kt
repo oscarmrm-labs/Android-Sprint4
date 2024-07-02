@@ -28,4 +28,6 @@ class ContactsRepository @Inject constructor(
     suspend fun deleteContact(id: Int?) = contactDao.deleteContactById(id)
 
     suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) = contactDao.updateFavouriteContact(id, isFavourite)
+
+    suspend fun getAllFavouritesContacts(): List<ContactEntity> = contactDao.getAllFavouritesContacts()
 }

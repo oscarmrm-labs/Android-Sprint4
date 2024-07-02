@@ -28,4 +28,8 @@ class ContactsUseCases @Inject constructor(
     suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
         repository.updateFavouriteContact(id, isFavourite)
     }
+
+    suspend fun getAllFavouritesContacts(): List<ContactModel> {
+        return ContactsConverter.contactEntityListToModelList(repository.getAllFavouritesContacts())
+    }
 }

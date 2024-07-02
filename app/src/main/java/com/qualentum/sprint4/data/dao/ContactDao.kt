@@ -25,4 +25,7 @@ interface ContactDao {
     @Query("UPDATE contacts SET is_favourite_contact = :isFavourite WHERE id = :contactId")
     suspend fun updateFavouriteContact(contactId: Int?, isFavourite: Boolean?)
 
+    @Query("SELECT * FROM contacts WHERE is_favourite_contact = (1) ORDER BY first_name ASC") // 1 = true | 0 = false
+    suspend fun getAllFavouritesContacts(): List<ContactEntity>
+
 }

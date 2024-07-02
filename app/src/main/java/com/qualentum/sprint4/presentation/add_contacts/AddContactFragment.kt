@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -87,6 +89,8 @@ class AddContactFragment : Fragment() {
         val favouriteColor = binding.ietColor.text.toString()
         val favouriteSport = binding.ietSport.text.toString()
 
-        viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport))
+        lifecycleScope.launch {
+            viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport))
+        }
     }
 }

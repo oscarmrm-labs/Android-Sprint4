@@ -13,7 +13,7 @@ import javax.inject.Inject
 class AddContactViewModel @Inject constructor(
     val contactsUseCases: ContactsUseCases
 ): ViewModel() {
-    fun insertContact(contact: DetailContactModel) {
+    suspend fun insertContact(contact: DetailContactModel) {
         viewModelScope.launch(Dispatchers.IO) {
             contactsUseCases.insertContact(contact)
         }

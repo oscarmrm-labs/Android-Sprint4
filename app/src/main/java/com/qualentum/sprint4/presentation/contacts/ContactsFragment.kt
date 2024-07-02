@@ -67,8 +67,8 @@ class ContactsFragment @Inject constructor() : Fragment() {
     private fun setupRecyclerView(contactsList: List<ContactModel>) {
         val adapter = ContactsAdapter(contactsList,
             { contact -> changeScreen(contact) },
-            { contact -> addToFavourites(contact?.id!!, contact.isFavourite!!) },
-            { contact -> deleteContact(contact?.id) }
+            { contact -> addToFavouritesById(contact?.id!!, contact.isFavourite!!) },
+            { contact -> deleteContactById(contact?.id) }
         )
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
@@ -81,7 +81,7 @@ class ContactsFragment @Inject constructor() : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun addToFavourites(id: Int?, isFavourite: Boolean?) {
+    private fun addToFavouritesById(id: Int?, isFavourite: Boolean?) {
         val toggleFavourite = !isFavourite!!
         lifecycleScope.launch {
             viewModel.updateFavouriteContact(id, toggleFavourite)
@@ -89,7 +89,7 @@ class ContactsFragment @Inject constructor() : Fragment() {
         }
     }
 
-    private fun deleteContact(id: Int?) {
+    private fun deleteContactById(id: Int?) {
         lifecycleScope.launch {
             viewModel.deleteContact(id)
             getAllContactsOrFilteredContacts(binding.searchField.query.toString())
