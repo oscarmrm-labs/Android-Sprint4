@@ -22,6 +22,8 @@ room = "2.6.1"
 
 daggerHilt = "2.51.1"
 
+location = "21.3.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -50,6 +52,9 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 # Dagger Hilt
 dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHilt" }
+
+# Google Maps
+google-play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "location" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -70,4 +70,7 @@ dependencies {
     // Dagger Hilt
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+
+    // Google Maps
+    implementation(libs.google.play.services.location)
 }
