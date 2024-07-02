@@ -26,5 +26,15 @@ class ContactsConverter {
                 favouriteSport = contactsEntity.favouriteSport,
             )
         }
+
+        fun detailContactModelToContactEntity(detailContactModel: DetailContactModel): ContactEntity {
+            return ContactEntity(
+                firstName = detailContactModel.name,
+                lastName = detailContactModel.lastName,
+                dateOfBirth = detailContactModel.dateOfBirth,
+                favouriteColorHex = detailContactModel.favouriteColorHex,
+                favouriteSport = detailContactModel.favouriteSport,
+            )
+        }
     }
 }

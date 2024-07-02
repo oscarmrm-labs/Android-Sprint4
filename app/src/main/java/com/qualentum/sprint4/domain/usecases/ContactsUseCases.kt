@@ -13,7 +13,9 @@ class ContactsUseCases @Inject constructor(
         return ContactsConverter.contactEntityListToModelList(repository.getContacts())
     }
 
-    suspend fun insertContact(contact: DetailContactModel) = repository.insertContact(contact)
+    suspend fun insertContact(contact: DetailContactModel) {
+        repository.insertContact(ContactsConverter.detailContactModelToContactEntity(contact))
+    }
 
     suspend fun getDetailContactById(id: Int): DetailContactModel {
         return ContactsConverter.contactEntityToDetailModel(repository.getContactById(id))
