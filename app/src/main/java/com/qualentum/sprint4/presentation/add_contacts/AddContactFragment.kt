@@ -1,10 +1,15 @@
 package com.qualentum.sprint4.presentation.add_contacts
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -21,6 +26,11 @@ import java.util.Locale
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
     private val viewModel: AddContactViewModel by viewModels()
+    private val permissionLocation =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) Toast.makeText(requireContext(), "Permiso acceptado", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(requireContext(), "Permiso rechazado", Toast.LENGTH_SHORT).show()
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,12 +59,34 @@ class AddContactFragment : Fragment() {
 
 
             btnShowLocation.setOnClickListener {
-                lifecycleScope.launch {
-                    val location = viewModel.getUserLocation(context)
-                    ietLatitude.setText(location.latitude)
-                    ietLongitude.setText(location.longitude)
-                    tvLocation.text = "Latitud: ${location.latitude}, Longitud: ${location.longitude}"
+                if (isRequestPermission()) {
+                    lifecycleScope.launch {
+                        val location = viewModel.getUserLocation(context)
+                        ietLatitude.setText(location.latitude)
+                        ietLongitude.setText(location.longitude)
+                        tvLocation.text =
+                            "Latitud: ${location.latitude}, Longitud: ${location.longitude}"
+                    }
                 }
+            }
+        }
+    }
+
+    fun isRequestPermission(): Boolean {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                return true
+            }
+            else -> {
+                permissionLocation.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                return false
             }
         }
     }
@@ -101,7 +133,17 @@ class AddContactFragment : Fragment() {
         val longitude = binding.ietLongitude.text.toString()
 
         lifecycleScope.launch {
-            viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport, latitude, longitude))
+            viewModel.insertContact(
+                DetailContactModel(
+                    name,
+                    lastName,
+                    dateOfBirth,
+                    favouriteColor,
+                    favouriteSport,
+                    latitude,
+                    longitude
+                )
+            )
         }
     }
 }
