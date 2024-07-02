@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.qualentum.sprint4.databinding.FragmentDetailBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
-import com.qualentum.sprint4.presentation.interfaces.ToolbarTitleListener
+import com.qualentum.sprint4.presentation.common.interfaces.ToolbarTitleListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,21 +20,12 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
     private val viewModel: DetailViewModel by viewModels()
+    private var toolbarTitleListener: ToolbarTitleListener? = null
 
     private val args: DetailFragmentArgs by navArgs()
     private var id: Int = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getContactArgs()
-        viewModel.setContactId(id)
-    }
-
-    private fun getContactArgs() {
-        id = args.id
-    }
-
-    private var toolbarTitleListener: ToolbarTitleListener? = null
+    //region fragment lifecycle
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,14 +34,31 @@ class DetailFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getContactArgs()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-        observeViewModel()
+        lifecycleScope.launch {
+            viewModel.getDetailContact(id)
+        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+    }
+
+    //endregion
+
+    private fun getContactArgs() {
+        id = args.id
     }
 
     private fun setToolbarTitle(title: String) {

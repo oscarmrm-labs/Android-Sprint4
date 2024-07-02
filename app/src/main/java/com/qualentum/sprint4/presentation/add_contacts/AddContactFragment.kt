@@ -61,14 +61,13 @@ class AddContactFragment : Fragment() {
                 MaterialDatePicker.todayInUtcMilliseconds()
             }
         }
+
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText(R.string.add_contact_screen_date_of_birth_title_dialog)
             .setSelection(selectedDate)
             .build()
 
-        activity?.let {
-            datePicker.show(it.supportFragmentManager, "MATERIAL_DATE_PICKER")
-        }
+        activity?.let { datePicker.show(it.supportFragmentManager, "MATERIAL_DATE_PICKER") }
 
         setOnClicksDatePicker(datePicker)
     }

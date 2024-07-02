@@ -22,44 +22,34 @@ object ContactsModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, "database").build()
+    fun provideAppDatabase(@ApplicationContext context: Context) =
+        Room.databaseBuilder(context, AppDatabase::class.java, "database").build()
 
 
     @Provides
     @Singleton
-    fun provideContactsViewModel(
-        contactsUseCases: ContactsUseCases
-    ): ContactsViewModel {
-        return ContactsViewModel (
-            contactsUseCases
-        )
-    }
+    fun provideContactsViewModel(contactsUseCases: ContactsUseCases): ContactsViewModel =
+        ContactsViewModel (contactsUseCases)
+
 
     @Provides
     @Singleton
-    fun provideFavouriteContactsViewModel(
-        contactsUseCases: ContactsUseCases
-    ): FavouritesViewModel {
-        return FavouritesViewModel (
-            contactsUseCases
-        )
-    }
+    fun provideFavouriteContactsViewModel(contactsUseCases: ContactsUseCases): FavouritesViewModel =
+        FavouritesViewModel (contactsUseCases)
+
 
     @Provides
     @Singleton
-    fun provideContactsUseCases(repository: ContactsRepository): ContactsUseCases {
-        return ContactsUseCases(repository)
-    }
+    fun provideContactsUseCases(repository: ContactsRepository): ContactsUseCases =
+        ContactsUseCases(repository)
 
     @Provides
     @Singleton
-    fun provideContactRepository(contactDao: ContactDao): ContactsRepository {
-        return ContactsRepository(contactDao)
-    }
+    fun provideContactRepository(contactDao: ContactDao): ContactsRepository =
+        ContactsRepository(contactDao)
 
     @Provides
     @Singleton
-    fun provideContactDAO(appDatabase: AppDatabase): ContactDao {
-        return appDatabase.contactDao()
-    }
+    fun provideContactDAO(appDatabase: AppDatabase): ContactDao =
+        appDatabase.contactDao()
 }

@@ -10,7 +10,7 @@ import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
 import com.qualentum.sprint4.presentation.common.ToolbarManager
 import com.qualentum.sprint4.presentation.extensions.navigateToSettings
-import com.qualentum.sprint4.presentation.interfaces.ToolbarTitleListener
+import com.qualentum.sprint4.presentation.common.interfaces.ToolbarTitleListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     private fun setUpToolbar() {
         toolbarManager = ToolbarManager(this, binding.toolbar, navController)
     }
-
 
     private fun setUpBottomNavigation() {
         binding.bottomNavigationView.setupWithNavController(navController)

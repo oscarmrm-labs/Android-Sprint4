@@ -18,30 +18,15 @@ class DetailViewModel @Inject constructor(
     val contactsUseCases: ContactsUseCases,
     val savedStateHandle: SavedStateHandle
 ): ViewModel() {
-    val TAG = "TAG"
-
-    private val idMutableState = MutableStateFlow(1)
-    val idState: StateFlow<Int> = idMutableState
-
     private val loadingMutableState = MutableStateFlow(true)
     val loadingState: StateFlow<Boolean> = loadingMutableState
 
     private var contactMutableState: MutableStateFlow<DetailContactModel> = MutableStateFlow(DetailContactModel("", "", "", "", ""))
     val contactState: StateFlow<DetailContactModel> = contactMutableState
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            loadingMutableState.value = true
-            getDetailContact(idMutableState.value)
-            loadingMutableState.value = false
-        }
-    }
     suspend fun getDetailContact(id: Int = 1) {
+        loadingMutableState.value = true
         contactMutableState.value = contactsUseCases.getDetailContactById(id)
-        Log.i(TAG, "getDetailContact: ${contactMutableState.value}")
-    }
-
-    fun setContactId(id: Int) {
-        idMutableState.value = id
+        loadingMutableState.value = false
     }
 }

@@ -10,9 +10,7 @@ class ContactsRepository @Inject constructor(
 ) {
     suspend fun getContacts(): List<ContactEntity> = contactDao.getAllContacts()
 
-    suspend fun insertContact(contact: ContactEntity) {
-        contactDao.insertContact(contact)
-    }
+    suspend fun insertContact(contact: ContactEntity) = contactDao.insertContact(contact)
 
     suspend fun getContactById(id: Int): ContactEntity = contactDao.getContactById(id)
 
