@@ -12,10 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qualentum.sprint4.databinding.FragmentFavouritesBinding
 import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.presentation.contacts.ContactsFragmentDirections
-import com.qualentum.sprint4.presentation.contacts.ContactsViewModel
-import com.qualentum.sprint4.presentation.contacts.list.ContactsAdapter
+import com.qualentum.sprint4.presentation.common.list.contacts.ContactsAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.databinding.FragmentContactsBinding
-import com.qualentum.sprint4.presentation.contacts.list.ContactsAdapter
+import com.qualentum.sprint4.presentation.common.list.contacts.ContactsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.qualentum.sprint4.presentation.contacts.list
+package com.qualentum.sprint4.presentation.common.list.contacts
 
 import android.content.Context
 import com.qualentum.sprint4.domain.model.ContactModel
