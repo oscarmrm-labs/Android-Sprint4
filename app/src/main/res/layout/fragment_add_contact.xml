@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="32dp"
     tools:context=".presentation.add_contacts.AddContactFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +15,6 @@
             android:id="@+id/tilName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
             android:hint="@string/add_contact_screen_name_hint"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,6 @@
             android:id="@+id/tilLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
             android:hint="@string/add_contact_screen_last_name_hint"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +50,6 @@
             android:id="@+id/tilDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
             android:hint="@string/add_contact_screen_date_of_birth_hint"
             app:endIconDrawable="@drawable/ic_calendar"
@@ -65,8 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:inputType="text"
-                android:focusable="true" />
+                android:focusable="true"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,9 +72,8 @@
             android:id="@+id/tilColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
-            android:hint="@string/add_contact_screen_last_favourite_color_hint"
+            android:hint="@string/add_contact_screen_favourite_color_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilDate">
@@ -93,9 +90,8 @@
             android:id="@+id/tilSport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
-            android:hint="@string/add_contact_screen_last_favourite_sport_hint"
+            android:hint="@string/add_contact_screen_favourite_sport_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilColor">
@@ -108,35 +104,71 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLatitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tilSport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tilLongitude"
+            android:hint="@string/add_contact_screen_latitude_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ietLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLongitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tilSport"
+            app:layout_constraintStart_toEndOf="@id/tilLatitude"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:autofillHints="Hola"
+            android:hint="@string/add_contact_screen_longitude_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ietLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnShowLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/add_contact_screen_button_add"
             android:layout_marginVertical="12dp"
-            app:layout_constraintTop_toBottomOf="@id/tilSport"
+            android:layout_marginBottom="16dp"
+            android:text="@string/add_contact_screen_get_current_location"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilLongitude" />
 
         <TextView
             android:id="@+id/tvLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prueba"
             android:layout_marginVertical="12dp"
-            app:layout_constraintTop_toBottomOf="@id/btnShowLocation"
+            android:text="Prueba"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/btnShowLocation" />
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="16dp"
             android:text="@string/add_contact_screen_button_add"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -50,7 +50,10 @@ class AddContactFragment : Fragment() {
 
             btnShowLocation.setOnClickListener {
                 lifecycleScope.launch {
-                    tvLocation.text = viewModel.getUserLocation(context)
+                    val location = viewModel.getUserLocation(context)
+                    ietLatitude.setText(location.latitude)
+                    ietLongitude.setText(location.longitude)
+                    tvLocation.text = "Latitud: ${location.latitude}, Longitud: ${location.longitude}"
                 }
             }
         }
@@ -94,9 +97,11 @@ class AddContactFragment : Fragment() {
         val dateOfBirth = binding.ietDate.text.toString()
         val favouriteColor = binding.ietColor.text.toString()
         val favouriteSport = binding.ietSport.text.toString()
+        val latitude = binding.ietLatitude.text.toString()
+        val longitude = binding.ietLongitude.text.toString()
 
         lifecycleScope.launch {
-            viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport))
+            viewModel.insertContact(DetailContactModel(name, lastName, dateOfBirth, favouriteColor, favouriteSport, latitude, longitude))
         }
     }
 }

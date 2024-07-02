@@ -16,8 +16,11 @@
     <string name="add_contact_screen_last_name_hint">Apellido</string>
     <string name="add_contact_screen_date_of_birth_hint">Fecha de nacimiento</string>
     <string name="add_contact_screen_date_of_birth_title_dialog">Seleccione la fecha</string>
-    <string name="add_contact_screen_last_favourite_color_hint">Color favorito</string>
-    <string name="add_contact_screen_last_favourite_sport_hint">Deporte favorito</string>
+    <string name="add_contact_screen_favourite_color_hint">Color favorito</string>
+    <string name="add_contact_screen_favourite_sport_hint">Deporte favorito</string>
+    <string name="add_contact_screen_latitude_hint">Latitud</string>
+    <string name="add_contact_screen_longitude_hint">Longitud</string>
+    <string name="add_contact_screen_get_current_location">Obtener ubicación</string>
     <string name="add_contact_screen_button_add">Añadir</string>
 
     <!-- Contacts Screen -->

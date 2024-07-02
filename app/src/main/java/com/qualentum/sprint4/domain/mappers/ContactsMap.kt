@@ -24,6 +24,8 @@ class ContactsConverter {
                 dateOfBirth = contactsEntity.dateOfBirth,
                 favouriteColorHex = contactsEntity.favouriteColorHex,
                 favouriteSport = contactsEntity.favouriteSport,
+                latitude = contactsEntity.latitude,
+                longitude = contactsEntity.longitude,
             )
         }
 
@@ -34,6 +36,8 @@ class ContactsConverter {
                 dateOfBirth = detailContactModel.dateOfBirth,
                 favouriteColorHex = detailContactModel.favouriteColorHex,
                 favouriteSport = detailContactModel.favouriteSport,
+                latitude = detailContactModel.latitude,
+                longitude = detailContactModel.longitude,
             )
         }
     }

@@ -21,7 +21,7 @@ class DetailViewModel @Inject constructor(
     private val loadingMutableState = MutableStateFlow(true)
     val loadingState: StateFlow<Boolean> = loadingMutableState
 
-    private var contactMutableState: MutableStateFlow<DetailContactModel> = MutableStateFlow(DetailContactModel("", "", "", "", ""))
+    private var contactMutableState: MutableStateFlow<DetailContactModel> = MutableStateFlow(DetailContactModel())
     val contactState: StateFlow<DetailContactModel> = contactMutableState
 
     suspend fun getDetailContact(id: Int = 1) {
