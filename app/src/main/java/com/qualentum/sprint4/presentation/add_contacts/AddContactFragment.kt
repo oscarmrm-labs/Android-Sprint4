@@ -46,6 +46,13 @@ class AddContactFragment : Fragment() {
             btnAddContact.setOnClickListener {
                 insertContactInDatabase()
             }
+
+
+            btnShowLocation.setOnClickListener {
+                lifecycleScope.launch {
+                    tvLocation.text = viewModel.getUserLocation(context)
+                }
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import com.qualentum.sprint4.data.AppDatabase
 import com.qualentum.sprint4.data.dao.ContactDao
 import com.qualentum.sprint4.data.repository.ContactsRepository
 import com.qualentum.sprint4.domain.usecases.ContactsUseCases
+import com.qualentum.sprint4.presentation.common.location.ManageLocation
 import com.qualentum.sprint4.presentation.contacts.ContactsViewModel
 import com.qualentum.sprint4.presentation.favourites.FavouritesViewModel
 import dagger.Module
@@ -52,4 +53,8 @@ object ContactsModule {
     @Singleton
     fun provideContactDAO(appDatabase: AppDatabase): ContactDao =
         appDatabase.contactDao()
+
+    @Provides
+    @Singleton
+    fun provideManageLocation(): ManageLocation = ManageLocation()
 }
