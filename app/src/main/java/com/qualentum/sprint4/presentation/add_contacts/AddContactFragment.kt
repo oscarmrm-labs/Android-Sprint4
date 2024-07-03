@@ -2,11 +2,7 @@ package com.qualentum.sprint4.presentation.add_contacts
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.RippleDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,7 +19,6 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
-import com.qualentum.sprint4.presentation.contacts.ContactsFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -81,7 +76,7 @@ class AddContactFragment : Fragment() {
                 val action = AddContactFragmentDirections.actionAddContactFragmentToColorPickerDialog(background)
                 findNavController().navigate(action)
             }
-            setFragmentResultListener("requestKey") { requestKey, bundle ->
+            setFragmentResultListener("requestKey") { _, bundle ->
                 val resultColor = bundle.getInt("newBackgroundColor")
                 showDialog.setBackgroundColor(resultColor)
             }

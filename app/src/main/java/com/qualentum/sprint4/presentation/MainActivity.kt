@@ -9,7 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.ActivityMainBinding
 import com.qualentum.sprint4.presentation.common.ToolbarManager
-import com.qualentum.sprint4.presentation.extensions.navigateToSettings
 import com.qualentum.sprint4.presentation.common.interfaces.ToolbarTitleListener
 import dagger.hilt.android.AndroidEntryPoint
 
