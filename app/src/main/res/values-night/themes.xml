@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Sprint4" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryVariantDark</item>
         <item name="colorOnPrimary">@color/colorOnPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
 
         <item name="toolbarStyle">@style/toolbarStyleDark</item>
         <item name="bottomNavigationStyle">@style/BottomBarNavigationStyleDark</item>

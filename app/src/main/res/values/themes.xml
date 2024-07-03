@@ -63,4 +63,5 @@
     <style name="cardSearchView">
         <item name="android:backgroundTint">@color/white</item>
     </style>
+
 </resources>
