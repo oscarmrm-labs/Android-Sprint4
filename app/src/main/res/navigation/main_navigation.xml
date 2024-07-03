@@ -17,7 +17,7 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_contactsFragment_to_detailFragment"
-            app:destination="@id/detailFragment"/>
+            app:destination="@id/detailFragment" />
         <action
             android:id="@+id/action_contactsFragment_to_addContactFragment"
             app:destination="@id/addContactFragment" />
@@ -34,7 +34,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_contactsFragment_to_detailFragment"
-            app:destination="@id/detailFragment"/>
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -59,5 +59,19 @@
         android:id="@+id/addContactFragment"
         android:name="com.qualentum.sprint4.presentation.add_contacts.AddContactFragment"
         android:label="@string/toolbar_title_add_contact"
-        tools:layout="@layout/fragment_add_contact"/>
+        tools:layout="@layout/fragment_add_contact">
+        <action
+            android:id="@+id/action_addContactFragment_to_colorPickerDialog"
+            app:destination="@id/colorPickerDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/colorPickerDialog"
+        android:name="com.qualentum.sprint4.presentation.add_contacts.ColorPickerDialog"
+        android:label="ColorPickerDialog"
+        tools:layout="@layout/dialog_color_picker">
+        <argument
+            android:name="color"
+            android:defaultValue="-16777216"
+            app:argType="integer" />
+    </dialog>
 </navigation>

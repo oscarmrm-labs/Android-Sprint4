@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvTitleDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="32sp"
+        android:text="Select color" />
+
+    <TextView
+        android:id="@+id/tvRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="R"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleDialog" />
+
+    <SeekBar
+        android:id="@+id/sbRed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:max="255"
+        android:progress="0"
+        android:progressBackgroundTint="@color/red"
+        android:progressTint="@color/red"
+        android:thumbTint="@color/red"
+        app:layout_constraintEnd_toStartOf="@id/tvRGBNumberRed"
+        app:layout_constraintStart_toEndOf="@id/tvRed"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleDialog" />
+
+
+    <TextView
+        android:id="@+id/tvRGBNumberRed"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sbRed"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleDialog" />
+
+    <TextView
+        android:id="@+id/tvGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="G"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRed" />
+
+    <SeekBar
+        android:id="@+id/sbGreen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:max="255"
+        android:progress="0"
+        android:progressBackgroundTint="@color/green"
+        android:progressTint="@color/green"
+        android:thumbTint="@color/green"
+        app:layout_constraintEnd_toStartOf="@id/tvRGBNumberGreen"
+        app:layout_constraintStart_toEndOf="@id/tvGreen"
+        app:layout_constraintTop_toBottomOf="@id/tvRed" />
+
+    <TextView
+        android:id="@+id/tvRGBNumberGreen"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sbGreen"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvRed" />
+
+    <TextView
+        android:id="@+id/tvBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvGreen" />
+
+    <SeekBar
+        android:id="@+id/sbBlue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:max="255"
+        android:progressBackgroundTint="@color/blue"
+        android:progressTint="@color/blue"
+        android:thumbTint="@color/blue"
+        app:layout_constraintEnd_toStartOf="@id/tvRGBNumberBlue"
+        app:layout_constraintStart_toEndOf="@id/tvBlue"
+        app:layout_constraintTop_toBottomOf="@id/tvGreen" />
+
+    <TextView
+        android:id="@+id/tvRGBNumberBlue"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sbGreen"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvGreen" />
+
+    <TextView
+        android:id="@+id/tvAlpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="α"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBlue" />
+
+    <SeekBar
+        android:id="@+id/sbTransparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:max="100"
+        android:progress="100"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:progressTint="@color/colorPrimary"
+        android:thumbTint="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@id/tvRGBNumberTransparent"
+        app:layout_constraintStart_toEndOf="@id/tvAlpha"
+        app:layout_constraintTop_toBottomOf="@id/tvBlue" />
+
+
+    <TextView
+        android:id="@+id/tvRGBNumberTransparent"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sbGreen"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvBlue" />
+
+    <View
+        android:id="@+id/colorSelected"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAlpha"
+        tools:background="@color/colorOnSecondary" />
+
+    <TextView
+        android:id="@+id/tvHexResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/colorSelected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:textSize="21sp"
+        android:textColor="@color/colorOnSecondary"
+        tools:text="#ffffff"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHexResult" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnOk"
+        app:layout_constraintTop_toBottomOf="@id/tvHexResult" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,11 @@ package com.qualentum.sprint4.presentation.add_contacts
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.RippleDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,12 +15,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.FragmentAddContactBinding
 import com.qualentum.sprint4.domain.model.DetailContactModel
+import com.qualentum.sprint4.presentation.contacts.ContactsFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -59,7 +67,7 @@ class AddContactFragment : Fragment() {
 
 
             btnShowLocation.setOnClickListener {
-                if (isRequestPermission()) {
+                if (requestPermission()) {
                     lifecycleScope.launch {
                         val location = viewModel.getUserLocation(context)
                         ietLatitude.setText(location.latitude)
@@ -69,10 +77,25 @@ class AddContactFragment : Fragment() {
                     }
                 }
             }
+
+            showDialog.setOnClickListener {
+                val background: Int = (showDialog.background as ColorDrawable).color
+                val action = AddContactFragmentDirections.actionAddContactFragmentToColorPickerDialog(
+                //id = contact?.id.toString().toInt()
+                color = background
+            )
+                findNavController().navigate(action)
+                //ColorPickerDialog().show(requireActivity().supportFragmentManager, "")
+            }
+            setFragmentResultListener("requestKey") { requestKey, bundle ->
+                val resultColor = bundle.getInt("newBackgroundColor")
+                // Usa el color devuelto
+                showDialog.setBackgroundColor(resultColor)
+            }
         }
     }
 
-    fun isRequestPermission(): Boolean {
+    private fun requestPermission(): Boolean {
         when {
             ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -122,6 +145,8 @@ class AddContactFragment : Fragment() {
             binding.ietDate.setText(formattedDate.toString())
         }
     }
+
+    //endregion
 
     private fun insertContactInDatabase() {
         val name = binding.ietName.text.toString()

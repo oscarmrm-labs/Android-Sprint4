@@ -1,0 +1,141 @@
+package com.qualentum.sprint4.presentation.add_contacts
+
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.SeekBar
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import com.qualentum.sprint4.databinding.DialogColorPickerBinding
+
+class ColorPickerDialog: DialogFragment() {
+    private lateinit var binding: DialogColorPickerBinding
+    private var color = -16777216
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            color = it.getInt("color")
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DialogColorPickerBinding.inflate(inflater, container, false)
+        inflateBinding()
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+    private fun inflateBinding() {
+        splitUpARGB(color)
+        setProgressToSeekBars()
+        changeViewBackgroundColor(color)
+        setSeekBarListeners()
+        setOnClickToButtons()
+    }
+
+    private fun splitUpARGB(color: Int) {
+        binding.apply {
+            tvRGBNumberTransparent.text = (Color.alpha(color) / 255 * 100).toString()
+            tvRGBNumberRed.text = Color.red(color).toString()
+            tvRGBNumberGreen.text = Color.green(color).toString()
+            tvRGBNumberBlue.text = Color.blue(color).toString()
+        }
+    }
+
+    private fun setProgressToSeekBars() {
+        binding.apply {
+            sbRed.progress = binding.tvRGBNumberRed.text.toString().toInt()
+            sbGreen.progress = binding.tvRGBNumberGreen.text.toString().toInt()
+            sbBlue.progress = binding.tvRGBNumberBlue.text.toString().toInt()
+            sbTransparent.progress = binding.tvRGBNumberTransparent.text.toString().toInt()
+        }
+    }
+
+    private fun changeViewBackgroundColor(argb: Int) {
+        binding.apply {
+            colorSelected.setBackgroundColor(argb)
+            tvHexResult.text = argb.toString()
+        }
+    }
+
+    private fun setSeekBarListeners() {
+        binding.apply {
+            sbRed.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    tvRGBNumberRed.text = progress.toString()
+                    changeViewBackgroundColor(getARGB())
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
+            })
+
+            sbGreen.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    tvRGBNumberGreen.text = progress.toString()
+                    changeViewBackgroundColor(getARGB())
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
+            })
+
+            sbBlue.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    tvRGBNumberBlue.text = progress.toString()
+                    changeViewBackgroundColor(getARGB())
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
+            })
+
+            sbTransparent.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    tvRGBNumberTransparent.text = progress.toString()
+                    changeViewBackgroundColor(getARGB())
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
+            })
+        }
+    }
+
+    private fun setOnClickToButtons() {
+        binding.apply {
+            btnCancel.setOnClickListener {
+                Toast.makeText(requireActivity(), "Color no guardado", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+            btnOk.setOnClickListener {
+                Toast.makeText(requireActivity(), "Color guardado", Toast.LENGTH_SHORT).show()
+                val result = Bundle().apply {
+                    putInt("newBackgroundColor", getARGB())
+                }
+                parentFragmentManager.setFragmentResult("requestKey", result)
+                dismiss()
+            }
+        }
+    }
+
+    private fun getARGB(): Int {
+        val red = binding.tvRGBNumberRed.text.toString().toInt()
+        val green = binding.tvRGBNumberGreen.text.toString().toInt()
+        val blue = binding.tvRGBNumberBlue.text.toString().toInt()
+        var alpha = binding.tvRGBNumberTransparent.text.toString().toInt()
+        alpha = (alpha / 100.0 * 255).toInt()
+        return Color.argb(alpha, red, green, blue)
+    }
+}
