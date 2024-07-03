@@ -9,7 +9,11 @@ import android.view.WindowManager
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.qualentum.sprint4.R
 import com.qualentum.sprint4.databinding.DialogColorPickerBinding
+
+private const val BUNDLE_COLOR_KEY = "backgroundColor"
+private const val COLOR_KEY_IDENTIFIER = "colorKeyIdentifier"
 
 class ColorPickerDialog: DialogFragment() {
     private lateinit var binding: DialogColorPickerBinding
@@ -18,9 +22,10 @@ class ColorPickerDialog: DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            color = it.getInt("color")
+            color = it.getInt(BUNDLE_COLOR_KEY)
         }
     }
+    
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +74,6 @@ class ColorPickerDialog: DialogFragment() {
     private fun changeViewBackgroundColor(argb: Int) {
         binding.apply {
             colorSelected.setBackgroundColor(argb)
-            tvHexResult.text = argb.toString()
         }
     }
 
@@ -116,15 +120,17 @@ class ColorPickerDialog: DialogFragment() {
     private fun setOnClickToButtons() {
         binding.apply {
             btnCancel.setOnClickListener {
-                Toast.makeText(requireActivity(), "Color no guardado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(),
+                    getString(R.string.dialog_color_picker_toast_dont_save_color), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
             btnOk.setOnClickListener {
-                Toast.makeText(requireActivity(), "Color guardado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(),
+                    getString(R.string.dialog_color_picker_toast_save_color), Toast.LENGTH_SHORT).show()
                 val result = Bundle().apply {
-                    putInt("newBackgroundColor", getARGB())
+                    putInt(BUNDLE_COLOR_KEY, getARGB())
                 }
-                parentFragmentManager.setFragmentResult("requestKey", result)
+                parentFragmentManager.setFragmentResult(COLOR_KEY_IDENTIFIER, result)
                 dismiss()
             }
         }

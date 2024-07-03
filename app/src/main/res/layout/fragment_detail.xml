@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="36sp"
+            tools:text="Maritn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName" />
-
 
         <TextView
             android:id="@+id/tvDateOfBirth"
@@ -41,13 +41,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvLastName" />
 
-
         <TextView
             android:layout_marginTop="30dp"
             android:id="@+id/tvFavouriteColorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Color favorito: "
+            android:text="@string/detail_screen_favourite_color"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDateOfBirth" />
@@ -57,7 +56,6 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:background="@color/colorOnSecondary"
-            android:text="Show color dialog"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="8dp"
             app:layout_constraintStart_toEndOf="@id/tvFavouriteColorLabel"
@@ -70,7 +68,7 @@
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFavouriteColorLabel"
-            android:text="Deporte favorito: " />
+            android:text="@string/detail_screen_favourite_sport" />
 
         <TextView
             android:id="@+id/tvFavouriteSport"
@@ -80,7 +78,7 @@
             android:layout_marginHorizontal="8dp"
             app:layout_constraintStart_toEndOf="@+id/tvFavouriteSportLabel"
             app:layout_constraintTop_toBottomOf="@id/tvFavouriteColorLabel"
-            tools:text="Fútbol" />
+            tools:text="soccer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -39,7 +39,6 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.qualentum.sprint4.presentation.detail.DetailFragment"
-        android:label="@string/toolbar_title_detail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="id"
@@ -70,7 +69,7 @@
         android:label="ColorPickerDialog"
         tools:layout="@layout/dialog_color_picker">
         <argument
-            android:name="color"
+            android:name="backgroundColor"
             android:defaultValue="-16777216"
             app:argType="integer" />
     </dialog>

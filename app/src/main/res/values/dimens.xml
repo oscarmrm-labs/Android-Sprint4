@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginVertical">8dp</dimen>
+    <dimen name="buttons_width_ok_cancel">120dp</dimen>
+    <dimen name="view_height_color_selected">50dp</dimen>
+</resources>

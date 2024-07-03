@@ -25,14 +25,21 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+private const val TAG_COLOR_PICKER_DIALOG = "MATERIAL_DATE_PICKER"
+private const val BUNDLE_COLOR_KEY = "backgroundColor"
+private const val COLOR_KEY_IDENTIFIER = "colorKeyIdentifier"
+private const val DATE_FORMAT = "yyyy-MM-dd"
+
 @AndroidEntryPoint
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
     private val viewModel: AddContactViewModel by viewModels()
     private val permissionLocation =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) Toast.makeText(requireContext(), "Permiso acceptado", Toast.LENGTH_SHORT).show()
-            else Toast.makeText(requireContext(), "Permiso rechazado", Toast.LENGTH_SHORT).show()
+            if (isGranted) Toast.makeText(requireContext(),
+                getString(R.string.toast_permission_accepted), Toast.LENGTH_SHORT).show()
+            else Toast.makeText(requireContext(),
+                getString(R.string.toast_permission_rejected), Toast.LENGTH_SHORT).show()
         }
 
     override fun onCreateView(
@@ -56,7 +63,8 @@ class AddContactFragment : Fragment() {
             }
             btnAddContact.setOnClickListener {
                 insertContactInDatabase()
-                Toast.makeText(requireContext(), "Contacto añadido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.toast_contact_added), Toast.LENGTH_SHORT).show()
                 findNavController().popBackStack()
             }
 
@@ -76,15 +84,15 @@ class AddContactFragment : Fragment() {
                 val action = AddContactFragmentDirections.actionAddContactFragmentToColorPickerDialog(background)
                 findNavController().navigate(action)
             }
-            setFragmentResultListener("requestKey") { _, bundle ->
-                val resultColor = bundle.getInt("newBackgroundColor")
+            setFragmentResultListener(COLOR_KEY_IDENTIFIER) { _, bundle ->
+                val resultColor = bundle.getInt(BUNDLE_COLOR_KEY)
                 showDialog.setBackgroundColor(resultColor)
             }
         }
     }
 
     private fun requestPermission(): Boolean {
-        when {
+        return when {
             ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -93,11 +101,11 @@ class AddContactFragment : Fragment() {
                 requireContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
-                return true
+                true
             }
             else -> {
                 permissionLocation.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-                return false
+                false
             }
         }
     }
@@ -106,7 +114,7 @@ class AddContactFragment : Fragment() {
         val selectedDate = let {
             if (binding.ietDate.text?.isNotEmpty() == true) {
                 val fechaStr = binding.ietDate.text
-                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val sdf = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
                 val date = sdf.parse(fechaStr.toString())
                 date?.time
             } else {
@@ -119,7 +127,7 @@ class AddContactFragment : Fragment() {
             .setSelection(selectedDate)
             .build()
 
-        activity?.let { datePicker.show(it.supportFragmentManager, "MATERIAL_DATE_PICKER") }
+        activity?.let { datePicker.show(it.supportFragmentManager, TAG_COLOR_PICKER_DIALOG) }
 
         setOnClicksDatePicker(datePicker)
     }
@@ -128,7 +136,7 @@ class AddContactFragment : Fragment() {
         datePicker.addOnPositiveButtonClickListener { selection ->
             val selectedDate = Date(selection)
             val formattedDate =
-                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDate)
+                SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(selectedDate)
             binding.ietDate.setText(formattedDate.toString())
         }
     }

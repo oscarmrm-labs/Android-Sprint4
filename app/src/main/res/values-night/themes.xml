@@ -1,7 +1,67 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Sprint4" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryVariantDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryDark</item>
+
+        <item name="toolbarStyle">@style/toolbarStyleDark</item>
+        <item name="bottomNavigationStyle">@style/BottomBarNavigationStyleDark</item>
+
+        <item name="colorSecondary">@color/colorSecondaryDark</item>
+        <item name="colorOnSecondary">@color/colorOnSecondaryDark</item>
+
+        <item name="colorError">@color/colorErrorDark</item>
+        <item name="colorOnError">@color/colorOnErrorDark</item>
+
+        <item name="android:colorBackground">@color/colorBackgroundDark</item>
+        <item name="colorOnBackground">@color/colorOnBackgroundDark</item>
+
+        <item name="colorSurface">@color/colorErrorDark</item>
+        <item name="colorOnSurface">@color/colorOnSurfaceDark</item>
+
+        <item name="android:statusBarColor" >@color/colorPrimaryVariantDark</item>
+        <item name="android:navigationBarColor" >@color/colorPrimaryVariantDark</item>
+
+        <item name="floatingActionButtonStyle">@style/floatingActionButtonStyleDark</item>
+
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="toolbarStyleDark" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:theme">@style/ThemeOverlay.MyApp.ActionBar</item>
+    </style>
+
+    <!-- Toolbar theme overlay to change icon color -->
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <!-- BottomBarNavigationStyle -->
+    <style name="BottomBarNavigationStyleDark" parent="@style/Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_bar_selector</item>
+        <item name="itemTextColor">@color/bottom_bar_selector</item>
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="floatingActionButtonStyleDark" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/colorSecondaryDark</item>
+        <item name="shapeAppearanceOverlay">@style/shapeRounded</item>
+        <item name="fabSize">normal</item>
+        <item name="iconSize">24dp</item>
+    </style>
+
+    <style name="shapeRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- SEARCH VIEW -->
+    <style name="cardSearchView">
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
     </style>
 </resources>

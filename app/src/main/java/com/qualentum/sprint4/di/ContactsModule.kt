@@ -19,12 +19,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ContactsModule {
-
+    const val DATABASE = "database"
 
     @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, AppDatabase::class.java, "database").build()
+        Room.databaseBuilder(context, AppDatabase::class.java, DATABASE).build()
 
 
     @Provides

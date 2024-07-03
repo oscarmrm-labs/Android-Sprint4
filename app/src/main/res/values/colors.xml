@@ -14,26 +14,50 @@
     <color name="yellow">#FFE500</color>
 
     <!-- COLORS LIGHT THEME -->
-        <!-- Primary brand color. -->
-        <color name="colorPrimary">#E69834</color>
-        <color name="colorPrimaryVariant">#B77929</color>
-        <color name="colorOnPrimary">#FFFFFF</color>
+    <!-- Primary brand color. -->
+    <color name="colorPrimary">#E69834</color>
+    <color name="colorPrimaryVariant">#B77929</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
 
-        <!-- Secondary brand color. -->
-        <color name="colorSecondary">#57E5EF</color>
-        <color name="colorOnSecondary">#545454</color>
+    <!-- Secondary brand color. -->
+    <color name="colorSecondary">#57E5EF</color>
+    <color name="colorOnSecondary">#545454</color>
 
-        <!-- Error color. -->
-        <color name="colorError">#B00020</color>
-        <color name="colorOnError">#FFFFFF</color>
+    <!-- Error color. -->
+    <color name="colorError">#B00020</color>
+    <color name="colorOnError">#FFFFFF</color>
 
-        <!-- Background color. -->
-        <color name="colorBackground">#FFE8C5</color>
-        <color name="colorOnBackground">#000000</color>
+    <!-- Background color. -->
+    <color name="colorBackground">#FFE8C5</color>
+    <color name="colorOnBackground">#000000</color>
 
-        <!-- Surface color. -->
-        <color name="colorSurface">#FFFFFF</color>
-        <color name="colorOnSurface">#000000</color>
+    <!-- Surface color. -->
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#000000</color>
+
+<!-- ============================================================== -->
+
+    <!-- COLORS LIGHT THEME -->
+    <!-- Primary brand color. -->
+    <color name="colorPrimaryDark">#1B1B1B</color>
+    <color name="colorPrimaryVariantDark">#000000</color>
+    <color name="colorOnPrimaryDark">#FFFFFF</color>
+
+    <!-- Secondary brand color. -->
+    <color name="colorSecondaryDark">#A17339</color>
+    <color name="colorOnSecondaryDark">#FFFFFF</color>
+
+    <!-- Error color. -->
+    <color name="colorErrorDark">#B00020</color>
+    <color name="colorOnErrorDark">#FFFFFF</color>
+
+    <!-- Background color. -->
+    <color name="colorBackgroundDark">#2B2B2B</color>
+    <color name="colorOnBackgroundDark">#FFFFFF</color>
+
+    <!-- Surface color. -->
+    <color name="colorSurfaceDark">#000000</color>
+    <color name="colorOnSurfaceDark">#FFFFFF</color>
 
 
 </resources>

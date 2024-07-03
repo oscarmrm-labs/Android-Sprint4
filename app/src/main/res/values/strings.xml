@@ -7,9 +7,13 @@
     <!-- TOOLBAR TITLES -->
     <string name="toolbar_title_contact">Contactos</string>
     <string name="toolbar_title_add_contact">Añadir contacto</string>
-    <string name="toolbar_title_detail">Nombre persona</string> <!-- TODO CAMBIAR POR EL NOMBRE DE LA PERSONA (con variables) -->
+    <string name="toolbar_title_detail">Nombre persona</string>
     <string name="toolbar_title_favourites">Favoritos</string>
     <string name="toolbar_title_settings">Ajustes</string>
+
+    <!-- Bottom Bar Navigation -->
+    <string name="bottom_nar_navigation_contacts">Contactos</string>
+    <string name="bottom_bar_navigation_favourites">Favoritos</string>
 
     <!-- Add Contact screen -->
     <string name="add_contact_screen_name_hint">Nombre</string>
@@ -22,10 +26,39 @@
     <string name="add_contact_screen_longitude_hint">Longitud</string>
     <string name="add_contact_screen_get_current_location">Obtener ubicación</string>
     <string name="add_contact_screen_button_add">Añadir</string>
+    <string name="add_contact_screen_tv_favourite_color">Color favorito</string>
+    <string name="toast_contact_added">Contacto añadido</string>
 
     <!-- Contacts Screen -->
     <string name="contacts_screen_content_description_fab">Añadir contactos</string>
-    <string name="search_view_hint">Search</string>
+    <string name="contacts_screen_search_view_hint">Search</string>
+
+    <!-- Color picker dialog -->
+    <string name="dialog_select_color_title">Seleccionar color</string>
+    <string name="dialog_color_picker_toast_dont_save_color">Color no guardado</string>
+    <string name="dialog_color_picker_toast_save_color">Color guardado</string>
+
+    <!-- Common dialogs buttons -->
+    <string name="btn_cancel_text">Cancelar</string>
+    <string name="btn_ok_text">Aceptar</string>
+
+    <!-- ARGB capitalizes -->
+    <string name="argb_alpha">α</string>
+    <string name="argb_blue">B</string>
+    <string name="argb_green">G</string>
+    <string name="argb_red">R</string>
+
+    <!-- Detail Screen  -->
+    <string name="detail_screen_favourite_color">Color favorito: </string>
+    <string name="detail_screen_favourite_sport">Deporte favorito: </string>
+
+    <!-- Row Contacts List -->
+    <string name="row_contact_ic_delete_description">Borrar</string>
+    <string name="row_contact_ic_add_favourite_description">añadir a favoritos</string>
+
+    <!-- Permissions -->
+    <string name="toast_permission_accepted">Permiso acceptado</string>
+    <string name="toast_permission_rejected">Permiso rechazado</string>
 
     <!-- SPORTS -->
     <!--
@@ -39,5 +72,5 @@
     <string name="sport_handball">Balonmano</string>
     <string name="sport_hockey">Hockey</string>
     <string name="sport_rugby">Rugby</string>
--->
+    -->
 </resources>
