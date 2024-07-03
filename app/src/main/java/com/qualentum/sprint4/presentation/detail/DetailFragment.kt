@@ -84,7 +84,7 @@ class DetailFragment : Fragment() {
             tvName.text = it.name
             tvLastName.text = it.lastName
             tvDateOfBirth.text = it.dateOfBirth
-            tvFavouriteColor.text = it.favouriteColorHex.toString()
+            ViewFavouriteColor.setBackgroundColor(it.favouriteColorHex!!)
             tvFavouriteSport.text = it.favouriteSport
             setToolbarTitle("${it.name} ${it.lastName}")
         }

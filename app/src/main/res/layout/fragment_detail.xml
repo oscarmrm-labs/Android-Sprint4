@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context=".presentation.detail.DetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Oscar"
-            android:textSize="42sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,8 +25,7 @@
             android:id="@+id/tvLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Martin"
-            android:textSize="42sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName" />
@@ -36,32 +36,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="09/09/2002"
-            android:textSize="42sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvLastName" />
 
 
         <TextView
-            android:id="@+id/tvFavouriteColor"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tvFavouriteColorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Rojo"
-            android:textSize="42sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Color favorito: "
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDateOfBirth" />
 
+        <View
+            android:id="@+id/ViewFavouriteColor"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@color/colorOnSecondary"
+            android:text="Show color dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintStart_toEndOf="@id/tvFavouriteColorLabel"
+            app:layout_constraintTop_toTopOf="@id/tvFavouriteColorLabel" />
+
+        <TextView
+            android:id="@+id/tvFavouriteSportLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFavouriteColorLabel"
+            android:text="Deporte favorito: " />
 
         <TextView
             android:id="@+id/tvFavouriteSport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Fútbol"
-            android:textSize="42sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFavouriteColor" />
+            android:textSize="24sp"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintStart_toEndOf="@+id/tvFavouriteSportLabel"
+            app:layout_constraintTop_toBottomOf="@id/tvFavouriteColorLabel"
+            tools:text="Fútbol" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
