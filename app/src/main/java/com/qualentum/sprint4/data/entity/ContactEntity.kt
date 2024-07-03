@@ -12,10 +12,9 @@ data class ContactEntity(
     @ColumnInfo(name = "first_name") val firstName: String?,
     @ColumnInfo(name = "last_name") val lastName: String?,
     @ColumnInfo(name = "date_of_birth") val dateOfBirth: String?,
-    @ColumnInfo(name = "favourite_color") val favouriteColorHex: String?,
+    @ColumnInfo(name = "favourite_color") val favouriteColorHex: Int?,
     @ColumnInfo(name = "favourite_sport") val favouriteSport: String?,
-    @ColumnInfo(name = "latitude") val latitude: String?,
-    @ColumnInfo(name = "longitude") val longitude: String?,
+    @ColumnInfo(name = "latitude") val latitude: Double?,
+    @ColumnInfo(name = "longitude") val longitude: Double?,
     @ColumnInfo(name = "is_favourite_contact") val isFavouriteContact: Boolean? = false,
-
-    )
+)

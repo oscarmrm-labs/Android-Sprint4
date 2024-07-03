@@ -26,7 +26,6 @@ class DetailFragment : Fragment() {
     private var id: Int = 1
 
     //region fragment lifecycle
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ToolbarTitleListener) {
@@ -85,7 +84,7 @@ class DetailFragment : Fragment() {
             tvName.text = it.name
             tvLastName.text = it.lastName
             tvDateOfBirth.text = it.dateOfBirth
-            tvFavouriteColor.text = it.favouriteColorHex
+            tvFavouriteColor.text = it.favouriteColorHex.toString()
             tvFavouriteSport.text = it.favouriteSport
             setToolbarTitle("${it.name} ${it.lastName}")
         }

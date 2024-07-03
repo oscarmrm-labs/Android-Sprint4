@@ -40,6 +40,13 @@ class FavouritesFragment @Inject constructor() : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            viewModel.getAllFavouriteContacts()
+        }
+    }
+
     private fun setupRecyclerView(contactsList: List<ContactModel>) {
         val adapter = ContactsAdapter(contactsList,
             { contact -> changeScreen(contact) },

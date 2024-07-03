@@ -59,10 +59,10 @@ class ColorPickerDialog: DialogFragment() {
 
     private fun setProgressToSeekBars() {
         binding.apply {
-            sbRed.progress = binding.tvRGBNumberRed.text.toString().toInt()
-            sbGreen.progress = binding.tvRGBNumberGreen.text.toString().toInt()
-            sbBlue.progress = binding.tvRGBNumberBlue.text.toString().toInt()
-            sbTransparent.progress = binding.tvRGBNumberTransparent.text.toString().toInt()
+            sbRed.progress = tvRGBNumberRed.text.toString().toInt()
+            sbGreen.progress = tvRGBNumberGreen.text.toString().toInt()
+            sbBlue.progress = tvRGBNumberBlue.text.toString().toInt()
+            sbTransparent.progress = tvRGBNumberTransparent.text.toString().toInt()
         }
     }
 

@@ -11,8 +11,8 @@ data class DetailContactModel(
     val name: String? = "",
     val lastName: String? = "",
     val dateOfBirth: String? = "",
-    val favouriteColorHex: String? = "",
+    val favouriteColorHex: Int? = -16777216,
     val favouriteSport: String? = "",
-    val latitude: String? = "",
-    val longitude: String? = "",
+    val latitude: Double? = 0.0,
+    val longitude: Double? = 0.0,
 )

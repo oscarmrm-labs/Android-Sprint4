@@ -52,9 +52,7 @@ class AddContactFragment : Fragment() {
     private fun inflateBinding() {
         binding.apply {
             ietDate.apply {
-                setOnClickListener {
-                    createMaterialDatePicker()
-                }
+                setOnClickListener { createMaterialDatePicker() }
                 onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
                     if (hasFocus) {
                         createMaterialDatePicker()
@@ -63,6 +61,8 @@ class AddContactFragment : Fragment() {
             }
             btnAddContact.setOnClickListener {
                 insertContactInDatabase()
+                Toast.makeText(requireContext(), "Contacto añadido", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
             }
 
 
@@ -72,24 +72,17 @@ class AddContactFragment : Fragment() {
                         val location = viewModel.getUserLocation(context)
                         ietLatitude.setText(location.latitude)
                         ietLongitude.setText(location.longitude)
-                        tvLocation.text =
-                            "Latitud: ${location.latitude}, Longitud: ${location.longitude}"
                     }
                 }
             }
 
             showDialog.setOnClickListener {
                 val background: Int = (showDialog.background as ColorDrawable).color
-                val action = AddContactFragmentDirections.actionAddContactFragmentToColorPickerDialog(
-                //id = contact?.id.toString().toInt()
-                color = background
-            )
+                val action = AddContactFragmentDirections.actionAddContactFragmentToColorPickerDialog(background)
                 findNavController().navigate(action)
-                //ColorPickerDialog().show(requireActivity().supportFragmentManager, "")
             }
             setFragmentResultListener("requestKey") { requestKey, bundle ->
                 val resultColor = bundle.getInt("newBackgroundColor")
-                // Usa el color devuelto
                 showDialog.setBackgroundColor(resultColor)
             }
         }
@@ -117,7 +110,6 @@ class AddContactFragment : Fragment() {
     private fun createMaterialDatePicker() {
         val selectedDate = let {
             if (binding.ietDate.text?.isNotEmpty() == true) {
-                //selectedDate = binding.ietDate.text
                 val fechaStr = binding.ietDate.text
                 val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 val date = sdf.parse(fechaStr.toString())
@@ -152,10 +144,10 @@ class AddContactFragment : Fragment() {
         val name = binding.ietName.text.toString()
         val lastName = binding.ietLastName.text.toString()
         val dateOfBirth = binding.ietDate.text.toString()
-        val favouriteColor = binding.ietColor.text.toString()
+        val favouriteColor = (binding.showDialog.background as ColorDrawable).color
         val favouriteSport = binding.ietSport.text.toString()
-        val latitude = binding.ietLatitude.text.toString()
-        val longitude = binding.ietLongitude.text.toString()
+        val latitude = binding.ietLatitude.text.toString().toDouble()
+        val longitude = binding.ietLongitude.text.toString().toDouble()
 
         lifecycleScope.launch {
             viewModel.insertContact(
