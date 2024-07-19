@@ -9,9 +9,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class ManageLocation @Inject constructor() {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @SuppressLint("MissingPermission")
     suspend fun getUserLocation(context: Context): Location? {
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)

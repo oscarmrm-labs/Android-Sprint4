@@ -49,7 +49,7 @@ class ColorPickerDialog: DialogFragment() {
         splitUpARGB(color)
         setProgressToSeekBars()
         changeViewBackgroundColor(color)
-        setSeekBarListeners()
+        setUpSeekBars()
         setOnClickToButtons()
     }
 
@@ -77,44 +77,31 @@ class ColorPickerDialog: DialogFragment() {
         }
     }
 
-    private fun setSeekBarListeners() {
+    private fun setUpSeekBars() {
         binding.apply {
-            sbRed.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    tvRGBNumberRed.text = progress.toString()
-                    changeViewBackgroundColor(getARGB())
-                }
-                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
-                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
-            })
-
-            sbGreen.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    tvRGBNumberGreen.text = progress.toString()
-                    changeViewBackgroundColor(getARGB())
-                }
-                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
-                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
-            })
-
-            sbBlue.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    tvRGBNumberBlue.text = progress.toString()
-                    changeViewBackgroundColor(getARGB())
-                }
-                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
-                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
-            })
-
-            sbTransparent.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                    tvRGBNumberTransparent.text = progress.toString()
-                    changeViewBackgroundColor(getARGB())
-                }
-                override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
-                override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
-            })
+            seekBarListeners(sbRed)
+            seekBarListeners(sbGreen)
+            seekBarListeners(sbBlue)
+            seekBarListeners(sbTransparent)
         }
+    }
+
+    private fun seekBarListeners(seekBar: SeekBar) {
+        seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                binding.apply {
+                    when (seekBar?.id) {
+                        sbRed.id -> tvRGBNumberRed.text = progress.toString()
+                        sbGreen.id -> tvRGBNumberGreen.text = progress.toString()
+                        sbBlue.id -> tvRGBNumberBlue.text = progress.toString()
+                        sbTransparent.id -> tvRGBNumberTransparent.text = progress.toString()
+                    }
+                }
+                changeViewBackgroundColor(getARGB())
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+            override fun onStopTrackingTouch(seekBar: SeekBar?)  = Unit
+        })
     }
 
     private fun setOnClickToButtons() {
