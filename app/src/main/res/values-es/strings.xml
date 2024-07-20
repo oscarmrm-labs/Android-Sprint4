@@ -67,6 +67,10 @@
     <string name="settings_screen_theme_dark">oscuro</string>
     <string name="settings_screen_theme_system">Sistema</string>
 
+    <string name="settings_screen_select_language">Idioma</string>
+    <string name="settings_screen_language_spanish">Español</string>
+    <string name="settings_screen_language_english">Inglés</string>
+
     <!-- SPORTS -->
     <!--
     <string name="sport_swimming">Natación</string>

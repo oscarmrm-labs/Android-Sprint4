@@ -40,7 +40,7 @@
 
     <!-- Common dialogs buttons -->
     <string name="btn_cancel_text">Cancel</string>
-    <string name="btn_ok_text">Ok</string>
+    <string name="btn_ok_text">OK</string>
 
     <!-- ARGB capitalizes -->
     <string name="argb_alpha">α</string>
@@ -65,6 +65,10 @@
     <string name="settings_screen_theme_light">light</string>
     <string name="settings_screen_theme_dark">dark</string>
     <string name="settings_screen_theme_system">System</string>
+
+    <string name="settings_screen_select_language">Language</string>
+    <string name="settings_screen_language_spanish">Spanish</string>
+    <string name="settings_screen_language_english">English</string>
 
     <!-- SPORTS -->
     <!--

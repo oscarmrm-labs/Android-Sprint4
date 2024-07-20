@@ -55,5 +55,4 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     override fun updateToolbarTitle(title: String) {
         toolbarManager.setTitle(title)
     }
-
 }

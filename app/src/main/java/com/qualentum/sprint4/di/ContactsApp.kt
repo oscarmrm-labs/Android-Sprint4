@@ -1,7 +1,11 @@
 package com.qualentum.sprint4.di
 
 import android.app.Application
+import android.app.LocaleManager
+import android.os.Build
+import android.os.LocaleList
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.qualentum.sprint4.data.shared_preferences.UserSharedPreferences
 import com.qualentum.sprint4.domain.enums.ThemesEnum
 import dagger.hilt.android.HiltAndroidApp
@@ -11,6 +15,7 @@ class ContactsApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        changeLanguage(UserSharedPreferences.getAppLanguagePreference(this))
         setTheme()
     }
 
@@ -23,5 +28,14 @@ class ContactsApp: Application() {
         }
     }
 
-
+    private fun changeLanguage(language: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            this.getSystemService(LocaleManager::class.java)
+                .applicationLocales = LocaleList.forLanguageTags(language)
+        } else {
+            AppCompatDelegate.setApplicationLocales(
+                LocaleListCompat.forLanguageTags(language)
+            )
+        }
+    }
 }

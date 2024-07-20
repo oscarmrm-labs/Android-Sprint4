@@ -2,8 +2,8 @@ package com.qualentum.sprint4.data.shared_preferences
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.qualentum.sprint4.domain.enums.LanguagesEnum
 import com.qualentum.sprint4.domain.enums.ThemesEnum
+import java.util.Locale
 
 object UserSharedPreferences {
     private const val SHARED_PREFERENCES_FILE_NAME: String = "USER_PREFERENCES"
@@ -30,7 +30,7 @@ object UserSharedPreferences {
 
     fun getAppLanguagePreference(context: Context): String {
         val sharedPreferences = getSharedPreferences(context)
-        return sharedPreferences.getString(CURRENT_APP_LANGUAGE_KEY, LanguagesEnum.ENGLISH.systemLanguage).toString()
+        return sharedPreferences.getString(CURRENT_APP_LANGUAGE_KEY, Locale.getDefault().language).toString()
     }
 
     fun saveAppThemePreference(context: Context, theme: String) {
