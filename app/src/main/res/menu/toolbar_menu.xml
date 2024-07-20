@@ -8,5 +8,6 @@
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
         android:iconTint="@color/colorOnSecondary"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        tools:targetApi="o" />
 </menu>
