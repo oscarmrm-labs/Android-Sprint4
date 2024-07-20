@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private const val TAG_COLOR_PICKER_DIALOG = "MATERIAL_DATE_PICKER"
+private const val TAG_COLOR_PICKER_DIALOG = "materialDatePicker"
 private const val BUNDLE_COLOR_KEY = "backgroundColor"
 private const val COLOR_KEY_IDENTIFIER = "colorKeyIdentifier"
 private const val DATE_FORMAT = "yyyy-MM-dd"
@@ -152,18 +152,16 @@ class AddContactFragment : Fragment() {
         val latitude = binding.ietLatitude.text.toString().toDouble()
         val longitude = binding.ietLongitude.text.toString().toDouble()
 
-        lifecycleScope.launch {
-            viewModel.insertContact(
-                DetailContactModel(
-                    name,
-                    lastName,
-                    dateOfBirth,
-                    favouriteColor,
-                    favouriteSport,
-                    latitude,
-                    longitude
-                )
+        viewModel.insertContact(
+            DetailContactModel(
+                name,
+                lastName,
+                dateOfBirth,
+                favouriteColor,
+                favouriteSport,
+                latitude,
+                longitude
             )
-        }
+        )
     }
 }

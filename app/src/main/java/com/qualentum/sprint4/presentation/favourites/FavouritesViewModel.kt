@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavouritesViewModel @Inject constructor(
-    val contactsUseCases: ContactsUseCases
+    private val contactsUseCases: ContactsUseCases
 ): ViewModel() {
 
     private val loadingMutableState = MutableStateFlow(true)
@@ -28,7 +28,7 @@ class FavouritesViewModel @Inject constructor(
         }
     }
 
-    suspend fun getAllFavouriteContacts() {
+    fun getAllFavouriteContacts() {
         viewModelScope.launch(Dispatchers.IO) {
             loadingMutableState.value = true
             favouritesContactsMutableState.value = contactsUseCases.getAllFavouritesContacts()
@@ -36,15 +36,19 @@ class FavouritesViewModel @Inject constructor(
         }
     }
 
-    suspend fun deleteContact(id: Int?) {
-        loadingMutableState.value = true
-        contactsUseCases.deleteContact(id)
-        loadingMutableState.value = false
+    fun deleteContact(id: Int?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loadingMutableState.value = true
+            contactsUseCases.deleteContact(id)
+            loadingMutableState.value = false
+        }
     }
 
-    suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
-        loadingMutableState.value = true
-        contactsUseCases.updateFavouriteContact(id, isFavourite)
-        loadingMutableState.value = false
+    fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loadingMutableState.value = true
+            contactsUseCases.updateFavouriteContact(id, isFavourite)
+            loadingMutableState.value = false
+        }
     }
 }

@@ -42,9 +42,7 @@ class FavouritesFragment @Inject constructor() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        lifecycleScope.launch {
-            viewModel.getAllFavouriteContacts()
-        }
+        viewModel.getAllFavouriteContacts()
     }
 
     private fun setupRecyclerView(contactsList: List<ContactModel>) {
@@ -66,16 +64,12 @@ class FavouritesFragment @Inject constructor() : Fragment() {
 
     private fun addToFavouritesById(id: Int?, isFavourite: Boolean?) {
         val toggleFavourite = !isFavourite!!
-        lifecycleScope.launch {
-            viewModel.updateFavouriteContact(id, toggleFavourite)
-            viewModel.getAllFavouriteContacts()
-        }
+        viewModel.updateFavouriteContact(id, toggleFavourite)
+        viewModel.getAllFavouriteContacts()
     }
 
     private fun deleteContactById(id: Int?) {
-        lifecycleScope.launch {
-            viewModel.deleteContact(id)
-            viewModel.getAllFavouriteContacts()
-        }
+        viewModel.deleteContact(id)
+        viewModel.getAllFavouriteContacts()
     }
 }

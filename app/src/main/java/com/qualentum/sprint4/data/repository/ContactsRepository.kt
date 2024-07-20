@@ -1,7 +1,7 @@
 package com.qualentum.sprint4.data.repository
 
-import com.qualentum.sprint4.data.dao.ContactDao
-import com.qualentum.sprint4.data.entity.ContactEntity
+import com.qualentum.sprint4.data.room.dao.ContactDao
+import com.qualentum.sprint4.data.room.entity.ContactEntity
 import javax.inject.Inject
 
 class ContactsRepository @Inject constructor(

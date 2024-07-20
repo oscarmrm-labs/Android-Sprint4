@@ -68,7 +68,7 @@ class DetailFragment : Fragment() {
         lifecycleScope.apply {
             launch {
                 viewModel.loadingState.collect {
-                    // TODO: Mostrar Loading
+
                 }
             }
             launch {

@@ -1,9 +1,9 @@
-package com.qualentum.sprint4.data.dao
+package com.qualentum.sprint4.data.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.qualentum.sprint4.data.entity.ContactEntity
+import com.qualentum.sprint4.data.room.entity.ContactEntity
 
 @Dao
 interface ContactDao {

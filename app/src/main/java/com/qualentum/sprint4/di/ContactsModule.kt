@@ -2,8 +2,8 @@ package com.qualentum.sprint4.di
 
 import android.content.Context
 import androidx.room.Room
-import com.qualentum.sprint4.data.AppDatabase
-import com.qualentum.sprint4.data.dao.ContactDao
+import com.qualentum.sprint4.data.room.AppDatabase
+import com.qualentum.sprint4.data.room.dao.ContactDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

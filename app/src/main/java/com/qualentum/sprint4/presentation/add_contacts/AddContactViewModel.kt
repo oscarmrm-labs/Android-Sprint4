@@ -17,7 +17,7 @@ class AddContactViewModel @Inject constructor(
     val contactsUseCases: ContactsUseCases,
     private val manageLocation: ManageLocation
 ): ViewModel() {
-    suspend fun insertContact(contact: DetailContactModel) {
+    fun insertContact(contact: DetailContactModel) {
         viewModelScope.launch(Dispatchers.IO) {
             contactsUseCases.insertContact(contact)
         }

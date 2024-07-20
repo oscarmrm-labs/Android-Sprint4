@@ -1,10 +1,8 @@
-package com.qualentum.sprint4.data.entity
+package com.qualentum.sprint4.data.room.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.RenameColumn
-import java.util.Date
 
 @Entity(tableName = "contacts")
 data class ContactEntity(

@@ -1,6 +1,6 @@
 package com.qualentum.sprint4.domain.mappers
 
-import com.qualentum.sprint4.data.entity.ContactEntity
+import com.qualentum.sprint4.data.room.entity.ContactEntity
 import com.qualentum.sprint4.domain.model.ContactModel
 import com.qualentum.sprint4.domain.model.DetailContactModel
 
