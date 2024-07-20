@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.qualentum.sprint4.presentation.SettingsFragment"
+        android:name="com.qualentum.sprint4.presentation.settings.SettingsFragment"
         android:label="@string/toolbar_title_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment

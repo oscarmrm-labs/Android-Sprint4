@@ -1,4 +1,4 @@
-package com.qualentum.sprint4.presentation
+package com.qualentum.sprint4.presentation.settings
 
 import android.app.LocaleManager
 import android.os.Build
@@ -17,7 +17,10 @@ import com.qualentum.sprint4.domain.enums.ThemesEnum
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(),
+    ThemesConfiguration,
+    LanguagesConfiguration
+{
     private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
@@ -30,12 +33,12 @@ class SettingsFragment : Fragment() {
         return binding.root
     }
 
-    private fun setUpRadioButtonsThemes() {
+    override fun setUpRadioButtonsThemes() {
         loadCheckRbThemes()
         radioButtonSetOnChangeListenerTheme()
     }
 
-    private fun loadCheckRbThemes() {
+    override fun loadCheckRbThemes() {
         binding.apply {
             val themePreference = UserSharedPreferences.getAppThemePreference(requireContext())
             when (themePreference) {
@@ -46,7 +49,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun radioButtonSetOnChangeListenerTheme() {
+    override fun radioButtonSetOnChangeListenerTheme() {
         binding.apply {
             rgTheme.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
@@ -67,12 +70,12 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun setUpRadioButtonsLanguages() {
+    override fun setUpRadioButtonsLanguages() {
         loadCheckRbLanguages()
         radioButtonSetOnChangeListenerLanguages()
     }
 
-    private fun loadCheckRbLanguages() {
+    override fun loadCheckRbLanguages() {
         binding.apply {
             val language = UserSharedPreferences.getAppLanguagePreference(requireContext())
             when (language) {
@@ -82,7 +85,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun radioButtonSetOnChangeListenerLanguages() {
+    override fun radioButtonSetOnChangeListenerLanguages() {
         binding.apply {
             rgLanguage.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
