@@ -1,7 +1,6 @@
 package com.qualentum.sprint4.presentation.contacts
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,15 +21,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ContactsFragment @Inject constructor() : Fragment() {
-
-    private val TAG = "TAG"
-
     private lateinit var binding: FragmentContactsBinding
     private val viewModel: ContactsViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
-        getAllContactsOrFilteredContacts(binding.searchField.query.toString())
+        getAllContacts(binding.searchField.query.toString())
     }
 
     override fun onCreateView(
@@ -43,25 +39,19 @@ class ContactsFragment @Inject constructor() : Fragment() {
         }
         binding.searchField.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                getAllContactsOrFilteredContacts(query)
+                getAllContacts(query)
                 return true
             }
             override fun onQueryTextChange(query: String?): Boolean {
-                getAllContactsOrFilteredContacts(query)
-                return true
+                getAllContacts(query)
+                return false
             }
         })
         return binding.root
     }
 
-    private fun getAllContactsOrFilteredContacts(query: String?) {
-        lifecycleScope.launch {
-            if (query.isNullOrBlank()){
-                viewModel.getAllContacts()
-            } else {
-                viewModel.getFilteredContacts(query)
-            }
-        }
+    private fun getAllContacts(query: String?) {
+        viewModel.getContacts(query)
     }
 
     private fun setupRecyclerView(contactsList: List<ContactModel>) {
@@ -85,15 +75,13 @@ class ContactsFragment @Inject constructor() : Fragment() {
         val toggleFavourite = !isFavourite!!
         lifecycleScope.launch {
             viewModel.updateFavouriteContact(id, toggleFavourite)
-            getAllContactsOrFilteredContacts(binding.searchField.query.toString())
+            getAllContacts(binding.searchField.query.toString())
         }
     }
 
     private fun deleteContactById(id: Int?) {
-        lifecycleScope.launch {
-            viewModel.deleteContact(id)
-            getAllContactsOrFilteredContacts(binding.searchField.query.toString())
-        }
+        viewModel.deleteContact(id)
+        getAllContacts(binding.searchField.query.toString())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,7 +89,6 @@ class ContactsFragment @Inject constructor() : Fragment() {
         lifecycleScope.launch {
             viewModel.contactsState.collect {
                 setupRecyclerView(it)
-                Log.i(TAG, "onCreateView: List of contacts ==> $it")
             }
         }
     }

@@ -2,13 +2,12 @@ package com.qualentum.sprint4.data.repository
 
 import com.qualentum.sprint4.data.dao.ContactDao
 import com.qualentum.sprint4.data.entity.ContactEntity
-import com.qualentum.sprint4.domain.model.DetailContactModel
 import javax.inject.Inject
 
 class ContactsRepository @Inject constructor(
     private val contactDao: ContactDao
 ) {
-    suspend fun getContacts(): List<ContactEntity> = contactDao.getAllContacts()
+    suspend fun getAllContacts(): List<ContactEntity> = contactDao.getAllContacts()
 
     suspend fun insertContact(contact: ContactEntity) = contactDao.insertContact(contact)
 

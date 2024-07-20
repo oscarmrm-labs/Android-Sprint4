@@ -9,10 +9,6 @@ import javax.inject.Inject
 class ContactsUseCases @Inject constructor(
     private val repository: ContactsRepository
 ) {
-    suspend fun getAllContacts(): List<ContactModel> {
-        return ContactsConverter.contactEntityListToModelList(repository.getContacts())
-    }
-
     suspend fun insertContact(contact: DetailContactModel) {
         repository.insertContact(ContactsConverter.detailContactModelToContactEntity(contact))
     }
@@ -21,8 +17,12 @@ class ContactsUseCases @Inject constructor(
         return ContactsConverter.contactEntityToDetailModel(repository.getContactById(id))
     }
 
-    suspend fun getFilteredContacts(filter: String?): List<ContactModel> {
-        return ContactsConverter.contactEntityListToModelList(repository.getFilteredContact(filter))
+    suspend fun getContacts(filter: String?): List<ContactModel> {
+        return if (filter == "") {
+            ContactsConverter.contactEntityListToModelList(repository.getAllContacts())
+        } else {
+            ContactsConverter.contactEntityListToModelList(repository.getFilteredContact(filter))
+        }
     }
 
     suspend fun deleteContact(id: Int?) = repository.deleteContact(id)

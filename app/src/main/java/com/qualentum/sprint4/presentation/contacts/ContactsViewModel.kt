@@ -22,38 +22,28 @@ class ContactsViewModel @Inject constructor(
         MutableStateFlow(ArrayList(emptyList()))
     val contactsState: StateFlow<List<ContactModel>> = contactsMutableState
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            getAllContacts()
-        }
-    }
-
-    suspend fun getAllContacts() {
-        viewModelScope.launch(Dispatchers.IO) {
-            loadingMutableState.value = true
-            contactsMutableState.value = contactsUseCases.getAllContacts()
-            loadingMutableState.value = false
-        }
-    }
-
-    suspend fun getFilteredContacts(filter: String?) {
+    fun getContacts(filter: String? = "") {
         viewModelScope.launch(Dispatchers.IO) {
             loadingMutableState.value = true
             val query = "%$filter%"
-            contactsMutableState.value = contactsUseCases.getFilteredContacts(query)
+            contactsMutableState.value = contactsUseCases.getContacts(query)
             loadingMutableState.value = false
         }
     }
 
-    suspend fun deleteContact(id: Int?) {
-        loadingMutableState.value = true
-        contactsUseCases.deleteContact(id)
-        loadingMutableState.value = false
+    fun deleteContact(id: Int?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loadingMutableState.value = true
+            contactsUseCases.deleteContact(id)
+            loadingMutableState.value = false
+        }
     }
 
-    suspend fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
-        loadingMutableState.value = true
-        contactsUseCases.updateFavouriteContact(id, isFavourite)
-        loadingMutableState.value = false
+    fun updateFavouriteContact(id: Int?, isFavourite: Boolean?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loadingMutableState.value = true
+            contactsUseCases.updateFavouriteContact(id, isFavourite)
+            loadingMutableState.value = false
+        }
     }
 }
